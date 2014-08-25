@@ -63,11 +63,10 @@
   
   <contributors>
     <contributor>
-      <id>boris</id>
       <name>Boris Gregorcic</name>
       <email>bg(at)phloc.com</email>
-      <url>http://www.phloc.com</url>
       <organization>phloc systems</organization>
+      <organizationUrl>http://www.phloc.com</organizationUrl>
     </contributor>
   </contributors>
   
