@@ -23,7 +23,7 @@ import javax.annotation.concurrent.ThreadSafe;
 import com.helger.commons.SystemProperties;
 
 /**
- * This class can be used to initialize POI to work best with the phloc stack.
+ * This class can be used to initialize POI to work best with the "ph" stack.
  *
  * @author Philip Helger
  */
@@ -32,6 +32,14 @@ public final class POISetup
 {
   public static final String SYS_PROP_POI_LOGGER = "org.apache.poi.util.POILogger";
   private static final AtomicBoolean s_aInited = new AtomicBoolean (false);
+
+  static
+  {
+    // Workaround some annoying POI 3.10 log messages
+    SystemProperties.setPropertyValue ("HSSFWorkbook.SheetInitialCapacity", Integer.toString (1));
+    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", Integer.toString (1));
+    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", Integer.toString (1));
+  }
 
   private POISetup ()
   {}

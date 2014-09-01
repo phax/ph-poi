@@ -61,15 +61,6 @@
     </developer>
   </developers>
   
-  <contributors>
-    <contributor>
-      <name>Boris Gregorcic</name>
-      <email>bg(at)phloc.com</email>
-      <organization>phloc systems</organization>
-      <organizationUrl>http://www.phloc.com</organizationUrl>
-    </contributor>
-  </contributors>
-  
   <properties>
     <poi.version>3.10-FINAL</poi.version>
   </properties>
