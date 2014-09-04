@@ -101,6 +101,7 @@ public class ExcelFormulaEvaluator
    * {@link #evaluateFormulaCell(Cell)}
    *
    * @param aCell
+   *        Cell to evaluate
    * @return The cell in which it was evaluated
    */
   @Nonnull
