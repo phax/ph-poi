@@ -40,7 +40,7 @@ import com.helger.poi.POISetup;
 
 /**
  * Encapsulates the main differences between the different excel versions.
- * 
+ *
  * @author Philip Helger
  */
 public enum EExcelVersion
@@ -173,6 +173,7 @@ public enum EExcelVersion
 
   static
   {
+    // Ensure the static system properties are set
     POISetup.initOnDemand ();
   }
 
@@ -184,7 +185,7 @@ public enum EExcelVersion
 
   /**
    * Open an existing work book for reading.
-   * 
+   *
    * @param aIS
    *        The input stream to read from. May not be <code>null</code>.
    * @return <code>null</code> in case the workbook cannot be opened.

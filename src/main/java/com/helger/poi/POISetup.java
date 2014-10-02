@@ -37,8 +37,8 @@ public final class POISetup
   {
     // Workaround some annoying POI 3.10 log messages
     SystemProperties.setPropertyValue ("HSSFWorkbook.SheetInitialCapacity", Integer.toString (1));
-    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", Integer.toString (1));
-    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", Integer.toString (1));
+    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", Integer.toString (20));
+    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", Integer.toString (5));
   }
 
   private POISetup ()
