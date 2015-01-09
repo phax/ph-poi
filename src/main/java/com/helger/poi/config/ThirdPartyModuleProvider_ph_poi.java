@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2014 Philip Helger (www.helger.com)
+ * Copyright (C) 2014-2015 Philip Helger (www.helger.com)
  * philip[at]helger[dot]com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ public final class ThirdPartyModuleProvider_ph_poi implements IThirdPartyModuleP
   public static final IThirdPartyModule POI = new ThirdPartyModule ("Apache POI",
                                                                     "Apache",
                                                                     ELicense.APACHE2,
-                                                                    new Version (3, 10, 1),
+                                                                    new Version (3, 11),
                                                                     "http://poi.apache.org/");
 
   @Nullable

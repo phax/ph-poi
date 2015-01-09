@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2014 Philip Helger (www.helger.com)
+    Copyright (C) 2014-2015 Philip Helger (www.helger.com)
     philip[at]helger[dot]com
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,7 +62,7 @@
   </developers>
   
   <properties>
-    <poi.version>3.10.1</poi.version>
+    <poi.version>3.11</poi.version>
   </properties>
 
   <dependencies>
