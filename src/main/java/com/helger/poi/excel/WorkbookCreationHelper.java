@@ -54,7 +54,7 @@ import com.helger.poi.excel.style.ExcelStyleCache;
 
 /**
  * A utility class for creating very simple Excel workbooks.
- * 
+ *
  * @author Philip Helger
  */
 public final class WorkbookCreationHelper
@@ -97,7 +97,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Create a new font in the passed workbook.
-   * 
+   *
    * @return The created font.
    */
   @Nonnull
@@ -117,7 +117,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Create a new sheet with an optional name
-   * 
+   *
    * @param sName
    *        The name to be used. May be <code>null</code>.
    * @return The created workbook sheet
@@ -186,16 +186,33 @@ public final class WorkbookCreationHelper
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (final Calendar aValue)
+  public Cell addCell (@Nullable final Calendar aValue)
   {
     final Cell aCell = addCell ();
     aCell.setCellType (Cell.CELL_TYPE_NUMERIC);
-    aCell.setCellValue (aValue);
+    if (aValue != null)
+      aCell.setCellValue (aValue);
+    return aCell;
+  }
+
+  /**
+   * @param aValue
+   *        The value to be set. May be <code>null</code>.
+   * @return A new cell in the current row of the current sheet with the passed
+   *         value
+   */
+  @Nonnull
+  public Cell addCell (@Nullable final Date aValue)
+  {
+    final Cell aCell = addCell ();
+    aCell.setCellType (Cell.CELL_TYPE_NUMERIC);
+    if (aValue != null)
+      aCell.setCellValue (aValue);
     return aCell;
   }
 
@@ -206,59 +223,53 @@ public final class WorkbookCreationHelper
    *         value
    */
   @Nonnull
-  public Cell addCell (final Date aValue)
+  public Cell addCell (@Nullable final LocalDate aValue)
   {
-    final Cell aCell = addCell ();
-    aCell.setCellType (Cell.CELL_TYPE_NUMERIC);
-    aCell.setCellValue (aValue);
-    return aCell;
-  }
-
-  /**
-   * @param aValue
-   *        The value to be set.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
-   */
-  @Nonnull
-  public Cell addCell (@Nonnull final LocalDate aValue)
-  {
+    if (aValue == null)
+      return addCell ();
     return addCell (aValue.toDateTime (CPDT.NULL_LOCAL_TIME));
   }
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (@Nonnull final LocalDateTime aValue)
+  public Cell addCell (@Nullable final LocalDateTime aValue)
   {
+    if (aValue == null)
+      return addCell ();
     return addCell (aValue.toDateTime ());
   }
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (@Nonnull final DateTime aValue)
+  public Cell addCell (@Nullable final DateTime aValue)
   {
+    if (aValue == null)
+      return addCell ();
     return addCell (aValue.toDate ());
   }
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (@Nonnull final BigInteger aValue)
+  public Cell addCell (@Nullable final BigInteger aValue)
   {
+    if (aValue == null)
+      return addCell ();
+
     if (aValue.compareTo (BIGINT_MIN_LONG) >= 0 && aValue.compareTo (BIGINT_MAX_LONG) <= 0)
       return addCell (aValue.longValue ());
 
@@ -283,13 +294,16 @@ public final class WorkbookCreationHelper
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (@Nonnull final BigDecimal aValue)
+  public Cell addCell (@Nullable final BigDecimal aValue)
   {
+    if (aValue == null)
+      return addCell ();
+
     try
     {
       return addCell (aValue.doubleValue ());
@@ -303,31 +317,33 @@ public final class WorkbookCreationHelper
 
   /**
    * @param aValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (final RichTextString aValue)
+  public Cell addCell (@Nullable final RichTextString aValue)
   {
     final Cell aCell = addCell ();
     aCell.setCellType (Cell.CELL_TYPE_STRING);
-    aCell.setCellValue (aValue);
+    if (aValue != null)
+      aCell.setCellValue (aValue);
     return aCell;
   }
 
   /**
    * @param sValue
-   *        The value to be set.
+   *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
    *         value
    */
   @Nonnull
-  public Cell addCell (final String sValue)
+  public Cell addCell (@Nullable final String sValue)
   {
     final Cell aCell = addCell ();
     aCell.setCellType (Cell.CELL_TYPE_STRING);
-    aCell.setCellValue (sValue);
+    if (sValue != null)
+      aCell.setCellValue (sValue);
     return aCell;
   }
 
@@ -348,7 +364,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Set the cell style of the last added cell
-   * 
+   *
    * @param aExcelStyle
    *        The style to be set.
    */
@@ -430,7 +446,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Write the current workbook to a file
-   * 
+   *
    * @param sFilename
    *        The file to write to. May not be <code>null</code>.
    * @return {@link ESuccess}
@@ -443,7 +459,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Write the current workbook to a file
-   * 
+   *
    * @param aFile
    *        The file to write to. May not be <code>null</code>.
    * @return {@link ESuccess}
@@ -456,7 +472,7 @@ public final class WorkbookCreationHelper
 
   /**
    * Write the current workbook to an output stream.
-   * 
+   *
    * @param aOS
    *        The output stream to write to. May not be <code>null</code>. Is
    *        automatically closed independent of the success state.
