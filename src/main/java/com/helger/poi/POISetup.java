@@ -20,7 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.annotation.concurrent.ThreadSafe;
 
-import com.helger.commons.SystemProperties;
+import com.helger.commons.system.SystemProperties;
 
 /**
  * This class can be used to initialize POI to work best with the "ph" stack.

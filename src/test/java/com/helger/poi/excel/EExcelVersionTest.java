@@ -23,12 +23,12 @@ import static org.junit.Assert.assertTrue;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
-import com.helger.commons.io.IReadableResource;
 import com.helger.commons.io.resource.ClassPathResource;
+import com.helger.commons.io.resource.IReadableResource;
 
 /**
  * Test class for class {@link EExcelVersion}.
- * 
+ *
  * @author Philip Helger
  */
 public final class EExcelVersionTest

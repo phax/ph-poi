@@ -25,7 +25,7 @@ import static org.junit.Assert.assertTrue;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.junit.Test;
 
-import com.helger.commons.mock.PHTestUtils;
+import com.helger.commons.mock.CommonsTestHelper;
 
 /**
  * Test class for class {@link ExcelStyle}.
@@ -38,11 +38,11 @@ public final class ExcelStyleTest
   public void testBasic ()
   {
     final ExcelStyle e = new ExcelStyle ();
-    PHTestUtils.testDefaultImplementationWithEqualContentObject (e, new ExcelStyle ());
+    CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e, new ExcelStyle ());
     e.setBorder (EExcelBorder.BORDER_DASH_DOT);
-    PHTestUtils.testDefaultImplementationWithDifferentContentObject (e, new ExcelStyle ());
-    PHTestUtils.testDefaultImplementationWithEqualContentObject (e,
-                                                                 new ExcelStyle ().setBorder (EExcelBorder.BORDER_DASH_DOT));
+    CommonsTestHelper.testDefaultImplementationWithDifferentContentObject (e, new ExcelStyle ());
+    CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e,
+                                                                       new ExcelStyle ().setBorder (EExcelBorder.BORDER_DASH_DOT));
   }
 
   @Test
@@ -50,12 +50,12 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getAlign ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final EExcelAlignment eAlign : EExcelAlignment.values ())
     {
       assertSame (e, e.setAlign (eAlign));
       assertEquals (eAlign, e.getAlign ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 
@@ -64,12 +64,12 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getVerticalAlign ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final EExcelVerticalAlignment eAlign : EExcelVerticalAlignment.values ())
     {
       assertSame (e, e.setVerticalAlign (eAlign));
       assertEquals (eAlign, e.getVerticalAlign ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 
@@ -78,13 +78,13 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertTrue (e.isWrapText () == ExcelStyle.DEFAULT_WRAP_TEXT);
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     assertSame (e, e.setWrapText (true));
     assertTrue (e.isWrapText ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     assertSame (e, e.setWrapText (false));
     assertFalse (e.isWrapText ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
   }
 
   @Test
@@ -92,13 +92,13 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getDataFormat ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     assertSame (e, e.setDataFormat ("abc"));
     assertEquals ("abc", e.getDataFormat ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     assertSame (e, e.setDataFormat (null));
     assertNull (e.getDataFormat ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
   }
 
   @Test
@@ -106,12 +106,12 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getFillBackgroundColor ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final IndexedColors eColor : IndexedColors.values ())
     {
       assertSame (e, e.setFillBackgroundColor (eColor));
       assertEquals (eColor, e.getFillBackgroundColor ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 
@@ -120,12 +120,12 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getFillForegroundColor ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final IndexedColors eColor : IndexedColors.values ())
     {
       assertSame (e, e.setFillForegroundColor (eColor));
       assertEquals (eColor, e.getFillForegroundColor ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 
@@ -134,12 +134,12 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getFillPattern ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final EExcelPattern ePattern : EExcelPattern.values ())
     {
       assertSame (e, e.setFillPattern (ePattern));
       assertEquals (ePattern, e.getFillPattern ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 
@@ -151,7 +151,7 @@ public final class ExcelStyleTest
     assertNull (e.getBorderRight ());
     assertNull (e.getBorderBottom ());
     assertNull (e.getBorderLeft ());
-    PHTestUtils.testGetClone (e);
+    CommonsTestHelper.testGetClone (e);
     for (final EExcelBorder eBorder : EExcelBorder.values ())
     {
       assertSame (e, e.setBorder (eBorder));
@@ -159,7 +159,7 @@ public final class ExcelStyleTest
       assertEquals (eBorder, e.getBorderRight ());
       assertEquals (eBorder, e.getBorderBottom ());
       assertEquals (eBorder, e.getBorderLeft ());
-      PHTestUtils.testGetClone (e);
+      CommonsTestHelper.testGetClone (e);
     }
   }
 }

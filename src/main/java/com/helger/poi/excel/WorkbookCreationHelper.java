@@ -45,8 +45,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
-import com.helger.commons.io.file.FileUtils;
-import com.helger.commons.io.streams.StreamUtils;
+import com.helger.commons.io.file.FileHelper;
+import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.state.ESuccess;
 import com.helger.datetime.CPDT;
 import com.helger.poi.excel.style.ExcelStyle;
@@ -454,7 +454,7 @@ public final class WorkbookCreationHelper
   @Nonnull
   public ESuccess write (@Nonnull final String sFilename)
   {
-    return write (FileUtils.getOutputStream (sFilename));
+    return write (FileHelper.getOutputStream (sFilename));
   }
 
   /**
@@ -467,7 +467,7 @@ public final class WorkbookCreationHelper
   @Nonnull
   public ESuccess write (@Nonnull final File aFile)
   {
-    return write (FileUtils.getOutputStream (aFile));
+    return write (FileHelper.getOutputStream (aFile));
   }
 
   /**
@@ -493,13 +493,13 @@ public final class WorkbookCreationHelper
     }
     catch (final IOException ex)
     {
-      if (!StreamUtils.isKnownEOFException (ex))
+      if (!StreamHelper.isKnownEOFException (ex))
         s_aLogger.error ("Failed to write Excel workbook to output stream " + aOS, ex);
       return ESuccess.FAILURE;
     }
     finally
     {
-      StreamUtils.close (aOS);
+      StreamHelper.close (aOS);
     }
   }
 }

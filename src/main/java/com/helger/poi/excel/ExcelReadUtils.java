@@ -35,15 +35,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.io.IInputStreamProvider;
-import com.helger.commons.io.streams.StreamUtils;
+import com.helger.commons.io.IHasInputStream;
+import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.string.StringHelper;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 /**
  * Misc Excel read helper methods.
- * 
+ *
  * @author Philip Helger
  */
 @Immutable
@@ -56,16 +56,16 @@ public final class ExcelReadUtils
 
   /**
    * Try to read an Excel {@link Workbook} from the passed
-   * {@link IInputStreamProvider}. First XLS is tried, than XLSX, as XLS files
-   * can be identified more easily.
-   * 
+   * {@link IHasInputStream}. First XLS is tried, than XLSX, as XLS files can be
+   * identified more easily.
+   *
    * @param aIIS
    *        The input stream provider to read from.
    * @return <code>null</code> if the content of the InputStream could not be
    *         interpreted as Excel file
    */
   @Nullable
-  public static Workbook readWorkbookFromInputStream (@Nonnull final IInputStreamProvider aIIS)
+  public static Workbook readWorkbookFromInputStream (@Nonnull final IHasInputStream aIIS)
   {
     InputStream aIS = null;
     try
@@ -86,7 +86,7 @@ public final class ExcelReadUtils
     catch (final OfficeXmlFileException ex)
     {
       // No XLS -> try XSLS
-      StreamUtils.close (aIS);
+      StreamHelper.close (aIS);
       try
       {
         // Re-retrieve the input stream, to ensure we read from the beginning!
@@ -105,7 +105,7 @@ public final class ExcelReadUtils
     finally
     {
       // Ensure the InputStream is closed. The data structures are in memory!
-      StreamUtils.close (aIS);
+      StreamHelper.close (aIS);
     }
     return null;
   }
@@ -130,7 +130,7 @@ public final class ExcelReadUtils
   /**
    * Return the best matching Java object underlying the passed cell.<br>
    * Note: Date values cannot be determined automatically!
-   * 
+   *
    * @param aCell
    *        The cell to be queried. May be <code>null</code>.
    * @return <code>null</code> if the cell is <code>null</code> or if it is of

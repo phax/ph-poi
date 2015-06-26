@@ -26,10 +26,10 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import com.helger.commons.ICloneable;
 import com.helger.commons.ValueEnforcer;
-import com.helger.commons.equals.EqualsUtils;
-import com.helger.commons.hash.HashCodeGenerator;
+import com.helger.commons.equals.EqualsHelper;
+import com.helger.commons.hashcode.HashCodeGenerator;
+import com.helger.commons.lang.ICloneable;
 import com.helger.commons.string.ToStringGenerator;
 
 /**
@@ -301,17 +301,17 @@ public final class ExcelStyle implements ICloneable <ExcelStyle>
     if (!(o instanceof ExcelStyle))
       return false;
     final ExcelStyle rhs = (ExcelStyle) o;
-    return EqualsUtils.equals (m_eAlign, rhs.m_eAlign) &&
-           EqualsUtils.equals (m_eVAlign, rhs.m_eVAlign) &&
+    return EqualsHelper.equals (m_eAlign, rhs.m_eAlign) &&
+           EqualsHelper.equals (m_eVAlign, rhs.m_eVAlign) &&
            m_bWrapText == rhs.m_bWrapText &&
-           EqualsUtils.equals (m_sDataFormat, rhs.m_sDataFormat) &&
-           EqualsUtils.equals (m_eFillBackgroundColor, rhs.m_eFillBackgroundColor) &&
-           EqualsUtils.equals (m_eFillForegroundColor, rhs.m_eFillForegroundColor) &&
-           EqualsUtils.equals (m_eFillPattern, rhs.m_eFillPattern) &&
-           EqualsUtils.equals (m_eBorderTop, rhs.m_eBorderTop) &&
-           EqualsUtils.equals (m_eBorderRight, rhs.m_eBorderRight) &&
-           EqualsUtils.equals (m_eBorderBottom, rhs.m_eBorderBottom) &&
-           EqualsUtils.equals (m_eBorderLeft, rhs.m_eBorderLeft) &&
+           EqualsHelper.equals (m_sDataFormat, rhs.m_sDataFormat) &&
+           EqualsHelper.equals (m_eFillBackgroundColor, rhs.m_eFillBackgroundColor) &&
+           EqualsHelper.equals (m_eFillForegroundColor, rhs.m_eFillForegroundColor) &&
+           EqualsHelper.equals (m_eFillPattern, rhs.m_eFillPattern) &&
+           EqualsHelper.equals (m_eBorderTop, rhs.m_eBorderTop) &&
+           EqualsHelper.equals (m_eBorderRight, rhs.m_eBorderRight) &&
+           EqualsHelper.equals (m_eBorderBottom, rhs.m_eBorderBottom) &&
+           EqualsHelper.equals (m_eBorderLeft, rhs.m_eBorderLeft) &&
            m_nFontIndex == rhs.m_nFontIndex;
   }
 
