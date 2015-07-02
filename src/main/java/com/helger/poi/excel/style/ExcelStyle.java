@@ -38,7 +38,7 @@ import com.helger.commons.string.ToStringGenerator;
  * @author Philip Helger
  */
 @NotThreadSafe
-public final class ExcelStyle implements ICloneable <ExcelStyle>
+public class ExcelStyle implements ICloneable <ExcelStyle>
 {
   /** By default text wrapping is disabled */
   public static final boolean DEFAULT_WRAP_TEXT = false;

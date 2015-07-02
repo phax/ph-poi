@@ -47,11 +47,11 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * @author Philip Helger
  */
 @Immutable
-public final class ExcelReadUtils
+public final class ExcelReadHelper
 {
-  private static final Logger s_aLogger = LoggerFactory.getLogger (ExcelReadUtils.class);
+  private static final Logger s_aLogger = LoggerFactory.getLogger (ExcelReadHelper.class);
 
-  private ExcelReadUtils ()
+  private ExcelReadHelper ()
   {}
 
   /**

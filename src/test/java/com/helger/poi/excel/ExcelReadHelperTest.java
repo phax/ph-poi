@@ -36,18 +36,18 @@ import org.junit.Test;
 import com.helger.commons.io.resource.ClassPathResource;
 
 /**
- * Test class for class {@link ExcelReadUtils}.
- * 
+ * Test class for class {@link ExcelReadHelper}.
+ *
  * @author Philip Helger
  */
-public final class ExcelReadUtilsTest
+public final class ExcelReadHelperTest
 {
   private static final String TEST1_XLS = "excel/test1.xls";
   private static final String TEST1_XLSX = "excel/test1.xlsx";
 
   /**
    * Validate reference sheets
-   * 
+   *
    * @param aWB
    *        Workbook to use
    */
@@ -133,21 +133,21 @@ public final class ExcelReadUtilsTest
   public void testReadWorkbookFromInputStream ()
   {
     // XLS
-    Workbook aWB = ExcelReadUtils.readWorkbookFromInputStream (new ClassPathResource (TEST1_XLS));
+    Workbook aWB = ExcelReadHelper.readWorkbookFromInputStream (new ClassPathResource (TEST1_XLS));
     assertNotNull (aWB);
     _validateWorkbook (aWB);
 
     // XLSX
-    aWB = ExcelReadUtils.readWorkbookFromInputStream (new ClassPathResource (TEST1_XLSX));
+    aWB = ExcelReadHelper.readWorkbookFromInputStream (new ClassPathResource (TEST1_XLSX));
     assertNotNull (aWB);
     _validateWorkbook (aWB);
 
     // No such file
-    aWB = ExcelReadUtils.readWorkbookFromInputStream (new ClassPathResource ("no-such-file.txt"));
+    aWB = ExcelReadHelper.readWorkbookFromInputStream (new ClassPathResource ("no-such-file.txt"));
     assertNull (aWB);
 
     // No Excel file
-    aWB = ExcelReadUtils.readWorkbookFromInputStream (new ClassPathResource ("excel/nonexcel.txt"));
+    aWB = ExcelReadHelper.readWorkbookFromInputStream (new ClassPathResource ("excel/nonexcel.txt"));
     assertNull (aWB);
   }
 
@@ -163,23 +163,23 @@ public final class ExcelReadUtilsTest
 
       // boolean
       aCell.setCellValue (true);
-      assertEquals (Boolean.TRUE, ExcelReadUtils.getCellValueObject (aCell));
+      assertEquals (Boolean.TRUE, ExcelReadHelper.getCellValueObject (aCell));
 
       // int
       aCell.setCellValue (4711);
-      assertEquals (Integer.valueOf (4711), ExcelReadUtils.getCellValueObject (aCell));
+      assertEquals (Integer.valueOf (4711), ExcelReadHelper.getCellValueObject (aCell));
 
       // long
       aCell.setCellValue (Long.MAX_VALUE);
-      assertEquals (Long.valueOf (Long.MAX_VALUE), ExcelReadUtils.getCellValueObject (aCell));
+      assertEquals (Long.valueOf (Long.MAX_VALUE), ExcelReadHelper.getCellValueObject (aCell));
 
       // double
-      aCell.setCellValue (3.14159);
-      assertEquals (Double.valueOf (3.14159), ExcelReadUtils.getCellValueObject (aCell));
+      aCell.setCellValue (3.11234);
+      assertEquals (Double.valueOf (3.11234), ExcelReadHelper.getCellValueObject (aCell));
 
       // String
       aCell.setCellValue ("Anyhow");
-      assertEquals ("Anyhow", ExcelReadUtils.getCellValueObject (aCell));
+      assertEquals ("Anyhow", ExcelReadHelper.getCellValueObject (aCell));
 
       // Rich text string
       final Font aFont = aWB.createFont ();
@@ -187,7 +187,7 @@ public final class ExcelReadUtilsTest
       final RichTextString aRTS = eVersion.createRichText ("Anyhow");
       aRTS.applyFont (1, 3, aFont);
       aCell.setCellValue (aRTS);
-      assertEquals ("Anyhow", ExcelReadUtils.getCellValueObject (aCell));
+      assertEquals ("Anyhow", ExcelReadHelper.getCellValueObject (aCell));
     }
   }
 
