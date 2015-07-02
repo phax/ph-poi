@@ -298,7 +298,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   {
     if (o == this)
       return true;
-    if (!(o instanceof ExcelStyle))
+    if (o == null || !getClass ().equals (o.getClass ()))
       return false;
     final ExcelStyle rhs = (ExcelStyle) o;
     return EqualsHelper.equals (m_eAlign, rhs.m_eAlign) &&
