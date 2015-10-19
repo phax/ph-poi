@@ -1,5 +1,4 @@
-ph-poi
-======
+#ph-poi
 
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write typesafe Excel files.
 
@@ -12,7 +11,7 @@ Add the following to your pom.xml to use this artifact:
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
 </dependency>
 ```
 
