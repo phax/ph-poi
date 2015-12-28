@@ -20,7 +20,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 
 /**
  * Excel pattern types
- * 
+ *
  * @author Philip Helger
  */
 public enum EExcelPattern

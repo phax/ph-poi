@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Test class for class {@link EExcelPattern}.
- * 
+ *
  * @author Philip Helger
  */
 public final class EExcelPatternTest

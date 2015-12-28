@@ -29,7 +29,7 @@ import org.slf4j.LoggerFactory;
  * to use it (see {@link com.helger.poi.POISetup} for the code). It is derived
  * from {@link SystemOutLogger}, because the super class
  * {@link org.apache.poi.util.POILogger} only has a package-private ctor.
- * 
+ *
  * @author Philip Helger
  */
 public class POISLF4JLogger extends SystemOutLogger
@@ -49,7 +49,7 @@ public class POISLF4JLogger extends SystemOutLogger
 
   /**
    * Log a message
-   * 
+   *
    * @param nLevel
    *        One of DEBUG, INFO, WARN, ERROR, FATAL
    * @param aObj
@@ -63,7 +63,7 @@ public class POISLF4JLogger extends SystemOutLogger
 
   /**
    * Log a message
-   * 
+   *
    * @param nLevel
    *        One of DEBUG, INFO, WARN, ERROR, FATAL
    * @param aMsg
@@ -131,7 +131,7 @@ public class POISLF4JLogger extends SystemOutLogger
 
   /**
    * Check if a logger is enabled to log at the specified level
-   * 
+   *
    * @param nLevel
    *        One of DEBUG, INFO, WARN, ERROR, FATAL
    * @return <code>true</code> if the logger can handle the specified error

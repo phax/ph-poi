@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Test class for class {@link WorkbookCreationHelper}.
- * 
+ *
  * @author Philip Helger
  */
 public final class WorkbookCreationHelperTest

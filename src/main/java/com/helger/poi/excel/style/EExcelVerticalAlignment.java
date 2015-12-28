@@ -20,7 +20,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 
 /**
  * Excel vertical alignment enum.
- * 
+ *
  * @author Philip Helger
  */
 public enum EExcelVerticalAlignment

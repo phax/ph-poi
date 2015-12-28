@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Test class for class {@link EExcelAlignment}.
- * 
+ *
  * @author Philip Helger
  */
 public final class EExcelAlignmentTest

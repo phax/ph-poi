@@ -20,7 +20,7 @@ import org.apache.poi.ss.usermodel.CellStyle;
 
 /**
  * Excel border styles.
- * 
+ *
  * @author Philip Helger
  */
 public enum EExcelBorder

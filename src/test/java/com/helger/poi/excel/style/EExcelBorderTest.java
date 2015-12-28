@@ -23,7 +23,7 @@ import org.junit.Test;
 
 /**
  * Test class for class {@link EExcelBorder}.
- * 
+ *
  * @author Philip Helger
  */
 public final class EExcelBorderTest

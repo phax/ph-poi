@@ -21,8 +21,12 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.annotation.Nonnegative;
 import javax.annotation.Nonnull;
@@ -38,9 +42,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
-import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +49,7 @@ import com.helger.commons.ValueEnforcer;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.state.ESuccess;
-import com.helger.datetime.CPDT;
+import com.helger.datetime.PDTFactory;
 import com.helger.poi.excel.style.ExcelStyle;
 import com.helger.poi.excel.style.ExcelStyleCache;
 
@@ -227,7 +228,7 @@ public final class WorkbookCreationHelper
   {
     if (aValue == null)
       return addCell ();
-    return addCell (aValue.toDateTime (CPDT.NULL_LOCAL_TIME));
+    return addCell (PDTFactory.createZonedDateTime (aValue));
   }
 
   /**
@@ -241,7 +242,7 @@ public final class WorkbookCreationHelper
   {
     if (aValue == null)
       return addCell ();
-    return addCell (aValue.toDateTime ());
+    return addCell (PDTFactory.createZonedDateTime (aValue));
   }
 
   /**
@@ -251,11 +252,11 @@ public final class WorkbookCreationHelper
    *         value
    */
   @Nonnull
-  public Cell addCell (@Nullable final DateTime aValue)
+  public Cell addCell (@Nullable final ZonedDateTime aValue)
   {
     if (aValue == null)
       return addCell ();
-    return addCell (aValue.toDate ());
+    return addCell (GregorianCalendar.from (aValue));
   }
 
   /**

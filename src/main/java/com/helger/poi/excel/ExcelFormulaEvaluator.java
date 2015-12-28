@@ -43,7 +43,7 @@ public class ExcelFormulaEvaluator
   public ExcelFormulaEvaluator (@Nonnull final Workbook aWB, @Nullable final IStabilityClassifier aStability)
   {
     m_aEvaluator = aWB instanceof HSSFWorkbook ? new HSSFFormulaEvaluator ((HSSFWorkbook) aWB, aStability)
-                                              : XSSFFormulaEvaluator.create ((XSSFWorkbook) aWB, aStability, null);
+                                               : XSSFFormulaEvaluator.create ((XSSFWorkbook) aWB, aStability, null);
   }
 
   /**
