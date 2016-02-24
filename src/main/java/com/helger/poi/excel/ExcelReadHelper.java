@@ -18,6 +18,7 @@ package com.helger.poi.excel;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.annotation.Nonnull;
@@ -38,6 +39,7 @@ import org.slf4j.LoggerFactory;
 import com.helger.commons.io.IHasInputStream;
 import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.string.StringHelper;
+import com.helger.datetime.PDTFactory;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -235,6 +237,13 @@ public final class ExcelReadHelper
         s_aLogger.warn ("Failed to get cell value as date: " + ex.getMessage ());
       }
     return null;
+  }
+
+  @Nullable
+  public static LocalDateTime getCellValueLocalDate (@Nullable final Cell aCell)
+  {
+    final Date aDate = getCellValueJavaDate (aCell);
+    return aDate == null ? null : PDTFactory.createLocalDateTime (aDate);
   }
 
   @Nullable
