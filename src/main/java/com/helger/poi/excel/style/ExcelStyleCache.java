@@ -16,15 +16,14 @@
  */
 package com.helger.poi.excel.style;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.collection.ext.CommonsHashMap;
+import com.helger.commons.collection.ext.ICommonsMap;
 import com.helger.commons.string.ToStringGenerator;
 
 /**
@@ -34,7 +33,7 @@ import com.helger.commons.string.ToStringGenerator;
  */
 public final class ExcelStyleCache
 {
-  private final Map <ExcelStyle, CellStyle> m_aMap = new HashMap <ExcelStyle, CellStyle> ();
+  private final ICommonsMap <ExcelStyle, CellStyle> m_aMap = new CommonsHashMap <> ();
 
   public ExcelStyleCache ()
   {}
