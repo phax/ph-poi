@@ -16,9 +16,6 @@
  */
 package com.helger.poi.excel;
 
-import static org.junit.Assert.fail;
-
-import org.apache.poi.ss.formula.FormulaParseException;
 import org.junit.Test;
 
 /**
@@ -34,14 +31,7 @@ public final class WorkbookCreationHelperTest
     final WorkbookCreationHelper aWCH = new WorkbookCreationHelper (EExcelVersion.XLSX);
     aWCH.createNewSheet ();
     aWCH.addRow ();
-    try
-    {
-      aWCH.addCellFormula ("ABC(A1)");
-      fail ();
-    }
-    catch (final FormulaParseException ex)
-    {
-      // expected
-    }
+    // Since 3.14 invalid formulas can be set without Exception
+    aWCH.addCellFormula ("ABC(A1)");
   }
 }

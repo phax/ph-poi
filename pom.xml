@@ -62,7 +62,7 @@
   </developers>
   
   <properties>
-    <poi.version>3.13</poi.version>
+    <poi.version>3.14</poi.version>
   </properties>
 
   <dependencies>

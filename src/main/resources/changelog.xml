@@ -18,6 +18,11 @@
 
 -->
 <changelog xmlns="http://www.helger.com/xsd/changelog/1.0" version="1.0" component="ph-poi">
+  <entry date="2016-04-19" category="tech" action="update">
+    <change>
+      <text locale="en">Updated to Apache POI 3.14</text>
+    </change>
+  </entry>
   <release date="2015-10-19" version="3.0.1" />
   <entry date="2015-10-16" category="tech" action="update">
     <change>
