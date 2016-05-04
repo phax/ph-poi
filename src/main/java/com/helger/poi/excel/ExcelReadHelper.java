@@ -18,7 +18,9 @@ package com.helger.poi.excel;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 import javax.annotation.Nonnull;
@@ -240,10 +242,24 @@ public final class ExcelReadHelper
   }
 
   @Nullable
-  public static LocalDateTime getCellValueLocalDate (@Nullable final Cell aCell)
+  public static LocalDateTime getCellValueLocalDateTime (@Nullable final Cell aCell)
   {
     final Date aDate = getCellValueJavaDate (aCell);
     return aDate == null ? null : PDTFactory.createLocalDateTime (aDate);
+  }
+
+  @Nullable
+  public static LocalDate getCellValueLocalDate (@Nullable final Cell aCell)
+  {
+    final Date aDate = getCellValueJavaDate (aCell);
+    return aDate == null ? null : PDTFactory.createLocalDate (aDate);
+  }
+
+  @Nullable
+  public static LocalTime getCellValueLocalTime (@Nullable final Cell aCell)
+  {
+    final Date aDate = getCellValueJavaDate (aCell);
+    return aDate == null ? null : PDTFactory.createLocalTime (aDate);
   }
 
   @Nullable
