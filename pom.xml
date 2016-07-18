@@ -31,7 +31,6 @@
   <description>Wrapper around Apache POI</description>
   <url>https://github.com/phax/ph-poi</url>
   <inceptionYear>2014</inceptionYear>
-  
   <licenses>
     <license>
       <name>Apache 2</name>
@@ -39,19 +38,16 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
   <scm>
     <connection>scm:git:git@github.com:phax/ph-poi.git</connection>
     <developerConnection>scm:git:git@github.com:phax/ph-poi.git</developerConnection>
     <url>http://github.com/phax/ph-poi</url>
     <tag>HEAD</tag>
   </scm>
-
   <organization>
     <name>Philip Helger</name>
     <url>http://www.helger.com</url>
   </organization>
-
   <developers>
     <developer>
       <id>philip</id>
@@ -60,11 +56,9 @@
       <url>http://www.helger.com</url>
     </developer>
   </developers>
-  
   <properties>
     <poi.version>3.14</poi.version>
   </properties>
-  
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -76,7 +70,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
   <dependencies>
     <dependency>
       <groupId>com.helger</groupId>
@@ -99,7 +92,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-     
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -111,7 +103,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
@@ -120,12 +111,10 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>
-              com.helger.poi.*
-            </Export-Package>
-            <Import-Package>
-              !javax.annotation.*,*
-            </Import-Package>
+            <Export-Package>com.helger.poi.*</Export-Package>
+            <Import-Package>!javax.annotation.*,*</Import-Package>
+            <Require-Capability>osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)"</Require-Capability>
+            <Provide-Capability>osgi.serviceloader; osgi.serviceloader=com.helger.poi.config.ThirdPartyModuleProvider_ph_poi</Provide-Capability>
           </instructions>
         </configuration>
       </plugin>
