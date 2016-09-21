@@ -16,32 +16,38 @@
  */
 package com.helger.poi.excel.style;
 
-import org.apache.poi.ss.usermodel.CellStyle;
+import javax.annotation.Nonnull;
+
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 
 /**
  * Excel horizontal alignment enum.
  *
  * @author Philip Helger
+ * @deprecated Use {@link HorizontalAlignment} instead
  */
+@Deprecated
 public enum EExcelAlignment
 {
-  ALIGN_GENERAL (CellStyle.ALIGN_GENERAL),
-  ALIGN_LEFT (CellStyle.ALIGN_LEFT),
-  ALIGN_CENTER (CellStyle.ALIGN_CENTER),
-  ALIGN_RIGHT (CellStyle.ALIGN_RIGHT),
-  ALIGN_FILL (CellStyle.ALIGN_FILL),
-  ALIGN_JUSTIFY (CellStyle.ALIGN_JUSTIFY),
-  ALIGN_CENTER_SELECTION (CellStyle.ALIGN_CENTER_SELECTION);
+  GENERAL (HorizontalAlignment.GENERAL),
+  LEFT (HorizontalAlignment.LEFT),
+  CENTER (HorizontalAlignment.CENTER),
+  RIGHT (HorizontalAlignment.RIGHT),
+  FILL (HorizontalAlignment.FILL),
+  JUSTIFY (HorizontalAlignment.JUSTIFY),
+  CENTER_SELECTION (HorizontalAlignment.CENTER_SELECTION),
+  DISTRIBUTED (HorizontalAlignment.DISTRIBUTED);
 
-  private final short m_nValue;
+  private final HorizontalAlignment m_eValue;
 
-  private EExcelAlignment (final short nValue)
+  private EExcelAlignment (@Nonnull final HorizontalAlignment eValue)
   {
-    m_nValue = nValue;
+    m_eValue = eValue;
   }
 
-  public short getValue ()
+  @Nonnull
+  public HorizontalAlignment getValue ()
   {
-    return m_nValue;
+    return m_eValue;
   }
 }

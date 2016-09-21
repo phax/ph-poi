@@ -31,6 +31,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.string.ToStringGenerator;
 
+@SuppressWarnings ("deprecation")
 public class ExcelFormulaEvaluator
 {
   private final FormulaEvaluator m_aEvaluator;

@@ -40,6 +40,7 @@ import com.helger.commons.io.resource.ClassPathResource;
  *
  * @author Philip Helger
  */
+@SuppressWarnings ("deprecation")
 public final class ExcelReadHelperTest
 {
   private static final String TEST1_XLS = "excel/test1.xls";

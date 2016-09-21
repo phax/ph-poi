@@ -20,10 +20,14 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import com.helger.commons.ValueEnforcer;
@@ -43,17 +47,17 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   /** By default text wrapping is disabled */
   public static final boolean DEFAULT_WRAP_TEXT = false;
 
-  private EExcelAlignment m_eAlign;
-  private EExcelVerticalAlignment m_eVAlign;
+  private HorizontalAlignment m_eAlign;
+  private VerticalAlignment m_eVAlign;
   private boolean m_bWrapText = DEFAULT_WRAP_TEXT;
   private String m_sDataFormat;
   private IndexedColors m_eFillBackgroundColor;
   private IndexedColors m_eFillForegroundColor;
-  private EExcelPattern m_eFillPattern;
-  private EExcelBorder m_eBorderTop;
-  private EExcelBorder m_eBorderRight;
-  private EExcelBorder m_eBorderBottom;
-  private EExcelBorder m_eBorderLeft;
+  private FillPatternType m_eFillPattern;
+  private BorderStyle m_eBorderTop;
+  private BorderStyle m_eBorderRight;
+  private BorderStyle m_eBorderBottom;
+  private BorderStyle m_eBorderLeft;
   private short m_nFontIndex = -1;
 
   public ExcelStyle ()
@@ -76,26 +80,40 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nullable
-  public EExcelAlignment getAlign ()
+  public HorizontalAlignment getAlign ()
   {
     return m_eAlign;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setAlign (@Nullable final EExcelAlignment eAlign)
+  {
+    return setAlign (eAlign == null ? null : eAlign.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setAlign (@Nullable final HorizontalAlignment eAlign)
   {
     m_eAlign = eAlign;
     return this;
   }
 
   @Nullable
-  public EExcelVerticalAlignment getVerticalAlign ()
+  public VerticalAlignment getVerticalAlign ()
   {
     return m_eVAlign;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setVerticalAlign (@Nullable final EExcelVerticalAlignment eVAlign)
+  {
+    return setVerticalAlign (eVAlign == null ? null : eVAlign.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setVerticalAlign (@Nullable final VerticalAlignment eVAlign)
   {
     m_eVAlign = eVAlign;
     return this;
@@ -153,72 +171,114 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nullable
-  public EExcelPattern getFillPattern ()
+  public FillPatternType getFillPattern ()
   {
     return m_eFillPattern;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setFillPattern (@Nullable final EExcelPattern ePattern)
+  {
+    return setFillPattern (ePattern == null ? null : ePattern.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setFillPattern (@Nullable final FillPatternType ePattern)
   {
     m_eFillPattern = ePattern;
     return this;
   }
 
   @Nullable
-  public EExcelBorder getBorderTop ()
+  public BorderStyle getBorderTop ()
   {
     return m_eBorderTop;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setBorderTop (@Nullable final EExcelBorder eBorder)
+  {
+    return setBorderTop (eBorder == null ? null : eBorder.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setBorderTop (@Nullable final BorderStyle eBorder)
   {
     m_eBorderTop = eBorder;
     return this;
   }
 
   @Nullable
-  public EExcelBorder getBorderRight ()
+  public BorderStyle getBorderRight ()
   {
     return m_eBorderRight;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setBorderRight (@Nullable final EExcelBorder eBorder)
+  {
+    return setBorderRight (eBorder == null ? null : eBorder.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setBorderRight (@Nullable final BorderStyle eBorder)
   {
     m_eBorderRight = eBorder;
     return this;
   }
 
   @Nullable
-  public EExcelBorder getBorderBottom ()
+  public BorderStyle getBorderBottom ()
   {
     return m_eBorderBottom;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setBorderBottom (@Nullable final EExcelBorder eBorder)
+  {
+    return setBorderBottom (eBorder == null ? null : eBorder.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setBorderBottom (@Nullable final BorderStyle eBorder)
   {
     m_eBorderBottom = eBorder;
     return this;
   }
 
   @Nullable
-  public EExcelBorder getBorderLeft ()
+  public BorderStyle getBorderLeft ()
   {
     return m_eBorderLeft;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setBorderLeft (@Nullable final EExcelBorder eBorder)
+  {
+    return setBorderLeft (eBorder == null ? null : eBorder.getValue ());
+  }
+
+  @Nonnull
+  public ExcelStyle setBorderLeft (@Nullable final BorderStyle eBorder)
   {
     m_eBorderLeft = eBorder;
     return this;
   }
 
   @Nonnull
+  @Deprecated
   public ExcelStyle setBorder (@Nullable final EExcelBorder eBorder)
+  {
+    return setBorderTop (eBorder).setBorderRight (eBorder).setBorderBottom (eBorder).setBorderLeft (eBorder);
+  }
+
+  @Nonnull
+  public ExcelStyle setBorder (@Nullable final BorderStyle eBorder)
   {
     return setBorderTop (eBorder).setBorderRight (eBorder).setBorderBottom (eBorder).setBorderLeft (eBorder);
   }
@@ -269,9 +329,9 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
                              @Nonnull final CreationHelper aCreationHelper)
   {
     if (m_eAlign != null)
-      aCS.setAlignment (m_eAlign.getValue ());
+      aCS.setAlignment (m_eAlign);
     if (m_eVAlign != null)
-      aCS.setVerticalAlignment (m_eVAlign.getValue ());
+      aCS.setVerticalAlignment (m_eVAlign);
     aCS.setWrapText (m_bWrapText);
     if (m_sDataFormat != null)
       aCS.setDataFormat (aCreationHelper.createDataFormat ().getFormat (m_sDataFormat));
@@ -280,15 +340,15 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
     if (m_eFillForegroundColor != null)
       aCS.setFillForegroundColor (m_eFillForegroundColor.getIndex ());
     if (m_eFillPattern != null)
-      aCS.setFillPattern (m_eFillPattern.getValue ());
+      aCS.setFillPattern (m_eFillPattern);
     if (m_eBorderTop != null)
-      aCS.setBorderTop (m_eBorderTop.getValue ());
+      aCS.setBorderTop (m_eBorderTop);
     if (m_eBorderRight != null)
-      aCS.setBorderRight (m_eBorderRight.getValue ());
+      aCS.setBorderRight (m_eBorderRight);
     if (m_eBorderBottom != null)
-      aCS.setBorderBottom (m_eBorderBottom.getValue ());
+      aCS.setBorderBottom (m_eBorderBottom);
     if (m_eBorderLeft != null)
-      aCS.setBorderLeft (m_eBorderLeft.getValue ());
+      aCS.setBorderLeft (m_eBorderLeft);
     if (m_nFontIndex >= 0)
       aCS.setFont (aWB.getFontAt (m_nFontIndex));
   }

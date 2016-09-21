@@ -22,7 +22,11 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
+import org.apache.poi.ss.usermodel.BorderStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.junit.Test;
 
 import com.helger.commons.mock.CommonsTestHelper;
@@ -39,10 +43,10 @@ public final class ExcelStyleTest
   {
     final ExcelStyle e = new ExcelStyle ();
     CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e, new ExcelStyle ());
-    e.setBorder (EExcelBorder.BORDER_DASH_DOT);
+    e.setBorder (BorderStyle.DASH_DOT);
     CommonsTestHelper.testDefaultImplementationWithDifferentContentObject (e, new ExcelStyle ());
     CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e,
-                                                                       new ExcelStyle ().setBorder (EExcelBorder.BORDER_DASH_DOT));
+                                                                       new ExcelStyle ().setBorder (BorderStyle.DASH_DOT));
   }
 
   @Test
@@ -51,7 +55,7 @@ public final class ExcelStyleTest
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getAlign ());
     CommonsTestHelper.testGetClone (e);
-    for (final EExcelAlignment eAlign : EExcelAlignment.values ())
+    for (final HorizontalAlignment eAlign : HorizontalAlignment.values ())
     {
       assertSame (e, e.setAlign (eAlign));
       assertEquals (eAlign, e.getAlign ());
@@ -65,7 +69,7 @@ public final class ExcelStyleTest
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getVerticalAlign ());
     CommonsTestHelper.testGetClone (e);
-    for (final EExcelVerticalAlignment eAlign : EExcelVerticalAlignment.values ())
+    for (final VerticalAlignment eAlign : VerticalAlignment.values ())
     {
       assertSame (e, e.setVerticalAlign (eAlign));
       assertEquals (eAlign, e.getVerticalAlign ());
@@ -135,7 +139,7 @@ public final class ExcelStyleTest
     final ExcelStyle e = new ExcelStyle ();
     assertNull (e.getFillPattern ());
     CommonsTestHelper.testGetClone (e);
-    for (final EExcelPattern ePattern : EExcelPattern.values ())
+    for (final FillPatternType ePattern : FillPatternType.values ())
     {
       assertSame (e, e.setFillPattern (ePattern));
       assertEquals (ePattern, e.getFillPattern ());
@@ -152,7 +156,7 @@ public final class ExcelStyleTest
     assertNull (e.getBorderBottom ());
     assertNull (e.getBorderLeft ());
     CommonsTestHelper.testGetClone (e);
-    for (final EExcelBorder eBorder : EExcelBorder.values ())
+    for (final BorderStyle eBorder : BorderStyle.values ())
     {
       assertSame (e, e.setBorder (eBorder));
       assertEquals (eBorder, e.getBorderTop ());

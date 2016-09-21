@@ -51,6 +51,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * @author Philip Helger
  */
 @Immutable
+@SuppressWarnings ("deprecation")
 public final class ExcelReadHelper
 {
   private static final Logger s_aLogger = LoggerFactory.getLogger (ExcelReadHelper.class);

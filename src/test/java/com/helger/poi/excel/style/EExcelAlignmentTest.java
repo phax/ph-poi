@@ -16,8 +16,8 @@
  */
 package com.helger.poi.excel.style;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -26,6 +26,7 @@ import org.junit.Test;
  *
  * @author Philip Helger
  */
+@Deprecated
 public final class EExcelAlignmentTest
 {
   @Test
@@ -33,7 +34,7 @@ public final class EExcelAlignmentTest
   {
     for (final EExcelAlignment eAlign : EExcelAlignment.values ())
     {
-      assertTrue (eAlign.getValue () >= 0);
+      assertNotNull (eAlign.getValue ());
       assertSame (eAlign, EExcelAlignment.valueOf (eAlign.name ()));
     }
   }

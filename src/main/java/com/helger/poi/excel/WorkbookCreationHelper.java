@@ -58,6 +58,7 @@ import com.helger.poi.excel.style.ExcelStyleCache;
  *
  * @author Philip Helger
  */
+@SuppressWarnings ("deprecation")
 public final class WorkbookCreationHelper
 {
   /** The BigInteger for the largest possible long value */

@@ -16,38 +16,43 @@
  */
 package com.helger.poi.excel.style;
 
-import org.apache.poi.ss.usermodel.CellStyle;
+import javax.annotation.Nonnull;
+
+import org.apache.poi.ss.usermodel.BorderStyle;
 
 /**
  * Excel border styles.
  *
  * @author Philip Helger
+ * @deprecated Use {@link BorderStyle} instead
  */
+@Deprecated
 public enum EExcelBorder
 {
-  BORDER_NONE (CellStyle.BORDER_NONE),
-  BORDER_THIN (CellStyle.BORDER_THIN),
-  BORDER_MEDIUM (CellStyle.BORDER_MEDIUM),
-  BORDER_DASHED (CellStyle.BORDER_DASHED),
-  BORDER_HAIR (CellStyle.BORDER_HAIR),
-  BORDER_THICK (CellStyle.BORDER_THICK),
-  BORDER_DOUBLE (CellStyle.BORDER_DOUBLE),
-  BORDER_DOTTED (CellStyle.BORDER_DOTTED),
-  BORDER_MEDIUM_DASHED (CellStyle.BORDER_MEDIUM_DASHED),
-  BORDER_DASH_DOT (CellStyle.BORDER_DASH_DOT),
-  BORDER_MEDIUM_DASH_DOT (CellStyle.BORDER_MEDIUM_DASH_DOT),
-  BORDER_DASH_DOT_DOT (CellStyle.BORDER_DASH_DOT_DOT),
-  BORDER_MEDIUM_DASH_DOT_DOT (CellStyle.BORDER_MEDIUM_DASH_DOT_DOT),
-  BORDER_SLANTED_DASH_DOT (CellStyle.BORDER_SLANTED_DASH_DOT);
+  BORDER_NONE (BorderStyle.NONE),
+  BORDER_THIN (BorderStyle.THIN),
+  BORDER_MEDIUM (BorderStyle.MEDIUM),
+  BORDER_DASHED (BorderStyle.DASHED),
+  BORDER_HAIR (BorderStyle.HAIR),
+  BORDER_THICK (BorderStyle.THICK),
+  BORDER_DOUBLE (BorderStyle.DOUBLE),
+  BORDER_DOTTED (BorderStyle.DOTTED),
+  BORDER_MEDIUM_DASHED (BorderStyle.MEDIUM_DASHED),
+  BORDER_DASH_DOT (BorderStyle.DASH_DOT),
+  BORDER_MEDIUM_DASH_DOT (BorderStyle.MEDIUM_DASH_DOT),
+  BORDER_DASH_DOT_DOT (BorderStyle.DASH_DOT_DOT),
+  BORDER_MEDIUM_DASH_DOT_DOT (BorderStyle.MEDIUM_DASH_DOT_DOT),
+  BORDER_SLANTED_DASH_DOT (BorderStyle.SLANTED_DASH_DOT);
 
-  private final short m_nValue;
+  private final BorderStyle m_nValue;
 
-  private EExcelBorder (final short nValue)
+  private EExcelBorder (@Nonnull final BorderStyle nValue)
   {
     m_nValue = nValue;
   }
 
-  public short getValue ()
+  @Nonnull
+  public BorderStyle getValue ()
   {
     return m_nValue;
   }

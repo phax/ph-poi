@@ -16,8 +16,8 @@
  */
 package com.helger.poi.excel.style;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -26,6 +26,7 @@ import org.junit.Test;
  *
  * @author Philip Helger
  */
+@Deprecated
 public final class EExcelBorderTest
 {
   @Test
@@ -33,7 +34,7 @@ public final class EExcelBorderTest
   {
     for (final EExcelBorder eBorder : EExcelBorder.values ())
     {
-      assertTrue (eBorder.getValue () >= 0);
+      assertNotNull (eBorder.getValue ());
       assertSame (eBorder, EExcelBorder.valueOf (eBorder.name ()));
     }
   }

@@ -27,6 +27,7 @@ import javax.annotation.WillClose;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -63,13 +64,9 @@ public enum EExcelVersion
         // Closes the input stream internally
         return new HSSFWorkbook (aIS);
       }
-      catch (final OfficeXmlFileException ex)
+      catch (final OfficeXmlFileException | IOException ex)
       {
         // No XLS
-        return null;
-      }
-      catch (final IOException ex)
-      {
         return null;
       }
     }
@@ -126,13 +123,9 @@ public enum EExcelVersion
         // Closes the input stream internally
         return new XSSFWorkbook (aIS);
       }
-      catch (final POIXMLException ex)
+      catch (final POIXMLException | NotOfficeXmlFileException | IOException ex)
       {
         // No XLSX
-        return null;
-      }
-      catch (final IOException ex)
-      {
         return null;
       }
     }
