@@ -4,7 +4,7 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 #News and noteworthy
 
-  * v4.1.0
+  * v4.1.0 - 2016-09-22
     * Updated to POI 3.15
   * v4.0.0 - 2016-06-10
     * Requires at least JDK 8
@@ -25,7 +25,7 @@ Add the following to your pom.xml to use this artifact:
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>4.0.0</version>
+  <version>4.1.0</version>
 </dependency>
 ```
 
