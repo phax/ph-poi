@@ -33,7 +33,7 @@ import com.helger.commons.string.ToStringGenerator;
  */
 public final class ExcelStyleCache
 {
-  private final ICommonsMap <ExcelStyle, CellStyle> m_aMap = new CommonsHashMap <> ();
+  private final ICommonsMap <ExcelStyle, CellStyle> m_aMap = new CommonsHashMap<> ();
 
   public ExcelStyleCache ()
   {}
@@ -55,6 +55,6 @@ public final class ExcelStyleCache
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("map", m_aMap).toString ();
+    return new ToStringGenerator (this).append ("map", m_aMap).getToString ();
   }
 }

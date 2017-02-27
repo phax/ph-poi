@@ -408,6 +408,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
                                        .appendIfNotNull ("borderBottom", m_eBorderBottom)
                                        .appendIfNotNull ("borderLeft", m_eBorderLeft)
                                        .append ("fontIndex", m_nFontIndex)
-                                       .toString ();
+                                       .getToString ();
   }
 }
