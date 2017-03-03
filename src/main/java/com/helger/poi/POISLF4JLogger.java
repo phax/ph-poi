@@ -52,27 +52,13 @@ public class POISLF4JLogger extends SystemOutLogger
    *
    * @param nLevel
    *        One of DEBUG, INFO, WARN, ERROR, FATAL
-   * @param aObj
-   *        The object to log.
-   */
-  @Override
-  public void log (final int nLevel, final Object aObj)
-  {
-    log (nLevel, aObj, null);
-  }
-
-  /**
-   * Log a message
-   *
-   * @param nLevel
-   *        One of DEBUG, INFO, WARN, ERROR, FATAL
    * @param aMsg
    *        The object to log. This is converted to a string.
    * @param aThrowable
    *        An exception to be logged
    */
   @Override
-  public void log (final int nLevel, @Nonnull final Object aMsg, @Nullable final Throwable aThrowable)
+  protected void _log (final int nLevel, @Nonnull final Object aMsg, @Nullable final Throwable aThrowable)
   {
     if (nLevel == FATAL || nLevel == ERROR)
     {

@@ -29,8 +29,10 @@ import javax.annotation.concurrent.Immutable;
 
 import org.apache.poi.POIXMLException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.poifs.filesystem.NotOLE2FileException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -51,7 +53,6 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * @author Philip Helger
  */
 @Immutable
-@SuppressWarnings ("deprecation")
 public final class ExcelReadHelper
 {
   private static final Logger s_aLogger = LoggerFactory.getLogger (ExcelReadHelper.class);
@@ -84,10 +85,6 @@ public final class ExcelReadHelper
       }
       return new HSSFWorkbook (aIS);
     }
-    catch (final IOException ex)
-    {
-      s_aLogger.error ("Error trying to read XLS file from " + aIIS, ex);
-    }
     catch (final OfficeXmlFileException ex)
     {
       // No XLS -> try XSLS
@@ -106,6 +103,14 @@ public final class ExcelReadHelper
       {
         // No XLSX either -> no valid Excel file
       }
+    }
+    catch (final NotOLE2FileException ex)
+    {
+      s_aLogger.error ("Error trying to read non-Excel file from " + aIIS + ": " + ex.getMessage ());
+    }
+    catch (final IOException ex)
+    {
+      s_aLogger.error ("Error trying to read XLS file from " + aIIS, ex);
     }
     finally
     {
@@ -147,32 +152,32 @@ public final class ExcelReadHelper
     if (aCell == null)
       return null;
 
-    final int nCellType = aCell.getCellType ();
-    switch (nCellType)
+    final CellType eCellType = aCell.getCellTypeEnum ();
+    switch (eCellType)
     {
-      case Cell.CELL_TYPE_NUMERIC:
+      case NUMERIC:
         return _getAsNumberObject (aCell.getNumericCellValue ());
-      case Cell.CELL_TYPE_STRING:
+      case STRING:
         return aCell.getStringCellValue ();
-      case Cell.CELL_TYPE_BOOLEAN:
+      case BOOLEAN:
         return Boolean.valueOf (aCell.getBooleanCellValue ());
-      case Cell.CELL_TYPE_FORMULA:
-        final int nFormulaResultType = aCell.getCachedFormulaResultType ();
-        switch (nFormulaResultType)
+      case FORMULA:
+        final CellType eFormulaResultType = aCell.getCachedFormulaResultTypeEnum ();
+        switch (eFormulaResultType)
         {
-          case Cell.CELL_TYPE_NUMERIC:
+          case NUMERIC:
             return _getAsNumberObject (aCell.getNumericCellValue ());
-          case Cell.CELL_TYPE_STRING:
+          case STRING:
             return aCell.getStringCellValue ();
-          case Cell.CELL_TYPE_BOOLEAN:
+          case BOOLEAN:
             return Boolean.valueOf (aCell.getBooleanCellValue ());
           default:
-            throw new IllegalArgumentException ("The cell formula type " + nFormulaResultType + " is unsupported!");
+            throw new IllegalArgumentException ("The cell formula type " + eFormulaResultType + " is unsupported!");
         }
-      case Cell.CELL_TYPE_BLANK:
+      case BLANK:
         return null;
       default:
-        throw new IllegalArgumentException ("The cell type " + nCellType + " is unsupported!");
+        throw new IllegalArgumentException ("The cell type " + eCellType + " is unsupported!");
     }
   }
 
@@ -295,7 +300,7 @@ public final class ExcelReadHelper
   {
     if (aCell == null)
       return false;
-    final int nType = aCell.getCellType ();
-    return nType == Cell.CELL_TYPE_BLANK || nType == Cell.CELL_TYPE_NUMERIC || nType == Cell.CELL_TYPE_FORMULA;
+    final CellType eType = aCell.getCellTypeEnum ();
+    return eType == CellType.BLANK || eType == CellType.NUMERIC || eType == CellType.FORMULA;
   }
 }
