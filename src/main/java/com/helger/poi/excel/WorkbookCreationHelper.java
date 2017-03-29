@@ -456,7 +456,7 @@ public final class WorkbookCreationHelper
   @Nonnull
   public ESuccess write (@Nonnull final String sFilename)
   {
-    return write (FileHelper.getOutputStream (sFilename));
+    return write (new File (sFilename));
   }
 
   /**

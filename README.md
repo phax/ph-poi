@@ -1,8 +1,8 @@
-#ph-poi
+# ph-poi
 
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write typesafe Excel files.
 
-#News and noteworthy
+# News and noteworthy
 
   * v4.1.0 - 2016-09-22
     * Updated to POI 3.15
@@ -19,9 +19,9 @@ Java library with some Apache POI improvements. Also adds some helper functions 
   * v2.9.1 - 2014-10-30
   * v2.9.0 - 2014-08-25   
 
-#Maven usage
+# Maven usage
 Add the following to your pom.xml to use this artifact:
-```
+```xml
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
