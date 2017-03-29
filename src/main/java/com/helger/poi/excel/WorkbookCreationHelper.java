@@ -454,6 +454,7 @@ public final class WorkbookCreationHelper
    * @return {@link ESuccess}
    */
   @Nonnull
+  @Deprecated
   public ESuccess write (@Nonnull final String sFilename)
   {
     return write (new File (sFilename));
