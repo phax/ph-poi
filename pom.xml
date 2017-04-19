@@ -25,7 +25,7 @@
     <version>1.9.3</version>
   </parent>
   <artifactId>ph-poi</artifactId>
-  <version>4.1.1-SNAPSHOT</version>
+  <version>4.1.1</version>
   <packaging>bundle</packaging>
   <name>ph-poi</name>
   <description>Wrapper around Apache POI</description>
@@ -42,7 +42,7 @@
     <connection>scm:git:git@github.com:phax/ph-poi.git</connection>
     <developerConnection>scm:git:git@github.com:phax/ph-poi.git</developerConnection>
     <url>http://github.com/phax/ph-poi</url>
-    <tag>HEAD</tag>
+    <tag>ph-poi-4.1.1</tag>
   </scm>
   <organization>
     <name>Philip Helger</name>
