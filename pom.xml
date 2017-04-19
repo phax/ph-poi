@@ -57,7 +57,7 @@
     </developer>
   </developers>
   <properties>
-    <poi.version>3.16-beta2</poi.version>
+    <poi.version>3.16</poi.version>
   </properties>
   <dependencyManagement>
     <dependencies>

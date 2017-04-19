@@ -4,6 +4,8 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
+  * v4.1.1 - work in progress
+    * Updated to POI 3.16
   * v4.1.0 - 2016-09-22
     * Updated to POI 3.15
   * v4.0.0 - 2016-06-10
