@@ -86,13 +86,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nonnull
-  @Deprecated
-  public ExcelStyle setAlign (@Nullable final EExcelAlignment eAlign)
-  {
-    return setAlign (eAlign == null ? null : eAlign.getValue ());
-  }
-
-  @Nonnull
   public ExcelStyle setAlign (@Nullable final HorizontalAlignment eAlign)
   {
     m_eAlign = eAlign;
@@ -103,13 +96,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   public VerticalAlignment getVerticalAlign ()
   {
     return m_eVAlign;
-  }
-
-  @Nonnull
-  @Deprecated
-  public ExcelStyle setVerticalAlign (@Nullable final EExcelVerticalAlignment eVAlign)
-  {
-    return setVerticalAlign (eVAlign == null ? null : eVAlign.getValue ());
   }
 
   @Nonnull
@@ -177,13 +163,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nonnull
-  @Deprecated
-  public ExcelStyle setFillPattern (@Nullable final EExcelPattern ePattern)
-  {
-    return setFillPattern (ePattern == null ? null : ePattern.getValue ());
-  }
-
-  @Nonnull
   public ExcelStyle setFillPattern (@Nullable final FillPatternType ePattern)
   {
     m_eFillPattern = ePattern;
@@ -194,13 +173,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   public BorderStyle getBorderTop ()
   {
     return m_eBorderTop;
-  }
-
-  @Nonnull
-  @Deprecated
-  public ExcelStyle setBorderTop (@Nullable final EExcelBorder eBorder)
-  {
-    return setBorderTop (eBorder == null ? null : eBorder.getValue ());
   }
 
   @Nonnull
@@ -217,13 +189,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nonnull
-  @Deprecated
-  public ExcelStyle setBorderRight (@Nullable final EExcelBorder eBorder)
-  {
-    return setBorderRight (eBorder == null ? null : eBorder.getValue ());
-  }
-
-  @Nonnull
   public ExcelStyle setBorderRight (@Nullable final BorderStyle eBorder)
   {
     m_eBorderRight = eBorder;
@@ -234,13 +199,6 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   public BorderStyle getBorderBottom ()
   {
     return m_eBorderBottom;
-  }
-
-  @Nonnull
-  @Deprecated
-  public ExcelStyle setBorderBottom (@Nullable final EExcelBorder eBorder)
-  {
-    return setBorderBottom (eBorder == null ? null : eBorder.getValue ());
   }
 
   @Nonnull
@@ -257,24 +215,10 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   }
 
   @Nonnull
-  @Deprecated
-  public ExcelStyle setBorderLeft (@Nullable final EExcelBorder eBorder)
-  {
-    return setBorderLeft (eBorder == null ? null : eBorder.getValue ());
-  }
-
-  @Nonnull
   public ExcelStyle setBorderLeft (@Nullable final BorderStyle eBorder)
   {
     m_eBorderLeft = eBorder;
     return this;
-  }
-
-  @Nonnull
-  @Deprecated
-  public ExcelStyle setBorder (@Nullable final EExcelBorder eBorder)
-  {
-    return setBorderTop (eBorder).setBorderRight (eBorder).setBorderBottom (eBorder).setBorderLeft (eBorder);
   }
 
   @Nonnull

@@ -3,7 +3,9 @@
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write typesafe Excel files.
 
 # News and noteworthy
-
+  * v5.0.0 - work in progress
+    * Updated to ph-commons 9.0.0
+    * Removed deprecated methods
   * v4.1.1 - 2017-04-19
     * Updated to POI 3.16
   * v4.1.0 - 2016-09-22
