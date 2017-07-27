@@ -388,6 +388,16 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * @return The number of unique styles in the current workbook. Always &ge; 0.
+   * @since 5.0.0
+   */
+  @Nonnegative
+  public int getCreatedCellStyleCount ()
+  {
+    return m_nCreatedCellStyles;
+  }
+
+  /**
    * @return The number of cells in the current row in the current sheet,
    *         0-based
    */
@@ -444,20 +454,6 @@ public final class WorkbookCreationHelper
     // Use the specified row (param1, param2)
     // From first column to last column (param3, param4)
     m_aLastSheet.setAutoFilter (new CellRangeAddress (nRowIndex, nRowIndex, 0, m_nMaxCellIndex - 1));
-  }
-
-  /**
-   * Write the current workbook to a file
-   *
-   * @param sFilename
-   *        The file to write to. May not be <code>null</code>.
-   * @return {@link ESuccess}
-   */
-  @Nonnull
-  @Deprecated
-  public ESuccess write (@Nonnull final String sFilename)
-  {
-    return write (new File (sFilename));
   }
 
   /**
