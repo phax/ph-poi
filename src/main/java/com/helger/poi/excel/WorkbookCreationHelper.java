@@ -142,10 +142,21 @@ public final class WorkbookCreationHelper
   @Nonnull
   public Row addRow ()
   {
+    if (m_aLastSheet == null)
+      throw new IllegalStateException ("A sheet needs to be created before a row can be added! Call createNewSheet");
     m_aLastRow = m_aLastSheet.createRow (m_nLastSheetRowIndex++);
     m_nLastRowCellIndex = 0;
     m_aLastCell = null;
     return m_aLastRow;
+  }
+
+  /**
+   * @return The number of rows in the current sheet, 0-based.
+   */
+  @Nonnegative
+  protected int getRowIndex ()
+  {
+    return m_nLastSheetRowIndex - 1;
   }
 
   /**
@@ -163,6 +174,8 @@ public final class WorkbookCreationHelper
   @Nonnull
   public Cell addCell ()
   {
+    if (m_aLastRow == null)
+      throw new IllegalStateException ("A row needs to be created before a cell can be added! Call addRow");
     m_aLastCell = m_aLastRow.createCell (m_nLastRowCellIndex++);
 
     // Check for the maximum cell index in this sheet
@@ -365,6 +378,46 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Add a merge region in the current row. Note: only the content of the first
+   * cell is used as the content of the merged cell!
+   *
+   * @param nFirstCol
+   *        First column to be merged (inclusive). 0-based
+   * @param nLastCol
+   *        Last column to be merged (inclusive). 0-based, must be larger than
+   *        {@code nFirstCol}
+   * @return index of this region
+   */
+  public int addMergeRegionInCurrentRow (@Nonnegative final int nFirstCol, @Nonnegative final int nLastCol)
+  {
+    final int nCurrentRowIndex = getRowIndex ();
+    return addMergeRegion (nCurrentRowIndex, nCurrentRowIndex, nFirstCol, nLastCol);
+  }
+
+  /**
+   * Adds a merged region of cells (hence those cells form one)
+   *
+   * @param nFirstRow
+   *        Index of first row
+   * @param nLastRow
+   *        Index of last row (inclusive), must be equal to or larger than
+   *        {@code nFirstRow}
+   * @param nFirstCol
+   *        Index of first column
+   * @param nLastCol
+   *        Index of last column (inclusive), must be equal to or larger than
+   *        {@code nFirstCol}
+   * @return index of this region
+   */
+  public int addMergeRegion (@Nonnegative final int nFirstRow,
+                             @Nonnegative final int nLastRow,
+                             @Nonnegative final int nFirstCol,
+                             @Nonnegative final int nLastCol)
+  {
+    return m_aLastSheet.addMergedRegion (new CellRangeAddress (nFirstRow, nLastRow, nFirstCol, nLastCol));
+  }
+
+  /**
    * Set the cell style of the last added cell
    *
    * @param aExcelStyle
@@ -464,9 +517,9 @@ public final class WorkbookCreationHelper
    * @return {@link ESuccess}
    */
   @Nonnull
-  public ESuccess write (@Nonnull final File aFile)
+  public ESuccess writeTo (@Nonnull final File aFile)
   {
-    return write (FileHelper.getOutputStream (aFile));
+    return writeTo (FileHelper.getOutputStream (aFile));
   }
 
   /**
@@ -478,7 +531,7 @@ public final class WorkbookCreationHelper
    * @return {@link ESuccess}
    */
   @Nonnull
-  public ESuccess write (@Nonnull @WillClose final OutputStream aOS)
+  public ESuccess writeTo (@Nonnull @WillClose final OutputStream aOS)
   {
     ValueEnforcer.notNull (aOS, "OutputStream");
 
