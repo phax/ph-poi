@@ -35,6 +35,9 @@ import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.CGlobal;
+import com.helger.commons.annotation.Nonempty;
+import com.helger.commons.id.IHasID;
+import com.helger.commons.lang.EnumHelper;
 import com.helger.commons.mime.CMimeType;
 import com.helger.commons.mime.IMimeType;
 import com.helger.poi.POISetup;
@@ -44,9 +47,9 @@ import com.helger.poi.POISetup;
  *
  * @author Philip Helger
  */
-public enum EExcelVersion
+public enum EExcelVersion implements IHasID <String>
 {
-  XLS
+  XLS ("xls")
   {
     @Override
     @Nonnull
@@ -105,7 +108,7 @@ public enum EExcelVersion
       return 65536;
     }
   },
-  XLSX
+  XLSX ("xlsx")
   {
     @Override
     @Nonnull
@@ -170,6 +173,20 @@ public enum EExcelVersion
     POISetup.initOnDemand ();
   }
 
+  private final String m_sID;
+
+  private EExcelVersion (@Nonnull @Nonempty final String sID)
+  {
+    m_sID = sID;
+  }
+
+  @Nonnull
+  @Nonempty
+  public String getID ()
+  {
+    return m_sID;
+  }
+
   /**
    * @return A newly created workbook of this version
    */
@@ -213,4 +230,16 @@ public enum EExcelVersion
    */
   @CheckForSigned
   public abstract int getRowLimitPerSheet ();
+
+  @Nullable
+  public static EExcelVersion getFromIDOrNull (@Nullable final String sID)
+  {
+    return EnumHelper.getFromIDOrNull (EExcelVersion.class, sID);
+  }
+
+  @Nullable
+  public static EExcelVersion getFromIDOrDefault (@Nullable final String sID, @Nullable final EExcelVersion eDefault)
+  {
+    return EnumHelper.getFromIDOrDefault (EExcelVersion.class, sID, eDefault);
+  }
 }
