@@ -6,6 +6,7 @@ Java library with some Apache POI improvements. Also adds some helper functions 
   * v5.0.0 - work in progress
     * Updated to ph-commons 9.0.0
     * Removed deprecated methods
+    * Updated to POI 3.17
   * v4.1.1 - 2017-04-19
     * Updated to POI 3.16
   * v4.1.0 - 2016-09-22
