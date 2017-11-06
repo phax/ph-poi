@@ -16,6 +16,8 @@
  */
 package com.helger.poi.excel.style;
 
+import java.io.Serializable;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.NotThreadSafe;
@@ -37,12 +39,12 @@ import com.helger.commons.lang.ICloneable;
 import com.helger.commons.string.ToStringGenerator;
 
 /**
- * Represents a single excel style with enums instead of numeric values.
+ * Represents a single excel style.
  *
  * @author Philip Helger
  */
 @NotThreadSafe
-public class ExcelStyle implements ICloneable <ExcelStyle>
+public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
 {
   /** By default text wrapping is disabled */
   public static final boolean DEFAULT_WRAP_TEXT = false;

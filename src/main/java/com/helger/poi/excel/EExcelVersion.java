@@ -96,12 +96,6 @@ public enum EExcelVersion implements IHasID <String>
     }
 
     @Override
-    public boolean hasRowLimitPerSheet ()
-    {
-      return true;
-    }
-
-    @Override
     public int getRowLimitPerSheet ()
     {
       // Max row limit is 65536. The index is therefore 0up to (limit-1)
@@ -152,12 +146,6 @@ public enum EExcelVersion implements IHasID <String>
     public IMimeType getMimeType ()
     {
       return CMimeType.APPLICATION_MS_EXCEL_2007;
-    }
-
-    @Override
-    public boolean hasRowLimitPerSheet ()
-    {
-      return false;
     }
 
     @Override
@@ -222,7 +210,10 @@ public enum EExcelVersion implements IHasID <String>
    * @return <code>true</code> if this Excel version has a row limit inside a
    *         sheet
    */
-  public abstract boolean hasRowLimitPerSheet ();
+  public boolean hasRowLimitPerSheet ()
+  {
+    return getRowLimitPerSheet () > 0;
+  }
 
   /**
    * @return the maximum number of rows per sheet (incl.) or

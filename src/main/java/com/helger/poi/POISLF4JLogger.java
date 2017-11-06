@@ -60,7 +60,8 @@ public class POISLF4JLogger extends SystemOutLogger
   @Override
   protected void _log (final int nLevel, @Nonnull final Object aMsg, @Nullable final Throwable aThrowable)
   {
-    if (nLevel == FATAL || nLevel == ERROR)
+    // >= 7
+    if (nLevel >= ERROR)
     {
       if (m_aLogger.isErrorEnabled ())
       {
@@ -71,7 +72,8 @@ public class POISLF4JLogger extends SystemOutLogger
       }
     }
     else
-      if (nLevel == WARN)
+      // >= 5
+      if (nLevel >= WARN)
       {
         if (m_aLogger.isWarnEnabled ())
         {
@@ -82,7 +84,8 @@ public class POISLF4JLogger extends SystemOutLogger
         }
       }
       else
-        if (nLevel == INFO)
+        // >= 3
+        if (nLevel >= INFO)
         {
           if (m_aLogger.isInfoEnabled ())
           {
@@ -93,7 +96,8 @@ public class POISLF4JLogger extends SystemOutLogger
           }
         }
         else
-          if (nLevel == DEBUG)
+          // >= 1
+          if (nLevel >= DEBUG)
           {
             if (m_aLogger.isDebugEnabled ())
             {
@@ -105,6 +109,7 @@ public class POISLF4JLogger extends SystemOutLogger
           }
           else
           {
+            // < 1
             if (m_aLogger.isTraceEnabled ())
             {
               if (aMsg != null)

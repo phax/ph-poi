@@ -22,6 +22,7 @@ import javax.annotation.Nullable;
 import org.apache.poi.ss.usermodel.CellStyle;
 
 import com.helger.commons.ValueEnforcer;
+import com.helger.commons.annotation.ReturnsMutableObject;
 import com.helger.commons.collection.impl.CommonsHashMap;
 import com.helger.commons.collection.impl.ICommonsMap;
 import com.helger.commons.string.ToStringGenerator;
@@ -31,12 +32,19 @@ import com.helger.commons.string.ToStringGenerator;
  *
  * @author Philip Helger
  */
-public final class ExcelStyleCache
+public class ExcelStyleCache
 {
-  private final ICommonsMap <ExcelStyle, CellStyle> m_aMap = new CommonsHashMap<> ();
+  private final ICommonsMap <ExcelStyle, CellStyle> m_aMap = new CommonsHashMap <> ();
 
   public ExcelStyleCache ()
   {}
+
+  @Nonnull
+  @ReturnsMutableObject
+  public ICommonsMap <ExcelStyle, CellStyle> map ()
+  {
+    return m_aMap;
+  }
 
   @Nullable
   public CellStyle getCellStyle (@Nullable final ExcelStyle aExcelStyle)
@@ -55,6 +63,6 @@ public final class ExcelStyleCache
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("map", m_aMap).getToString ();
+    return new ToStringGenerator (this).append ("Map", m_aMap).getToString ();
   }
 }
