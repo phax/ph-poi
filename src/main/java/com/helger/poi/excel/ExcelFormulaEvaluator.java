@@ -23,6 +23,7 @@ import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.formula.IStabilityClassifier;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CellValue;
 import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -31,7 +32,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.commons.string.ToStringGenerator;
 
-@SuppressWarnings ("deprecation")
 public class ExcelFormulaEvaluator
 {
   private final FormulaEvaluator m_aEvaluator;
@@ -82,9 +82,10 @@ public class ExcelFormulaEvaluator
    * @return The type of the formula result (the cell's type remains as
    *         Cell.CELL_TYPE_FORMULA however)
    */
-  public int evaluateFormulaCell (@Nonnull final Cell aCell)
+  @Nullable
+  public CellType evaluateFormulaCell (@Nonnull final Cell aCell)
   {
-    return m_aEvaluator.evaluateFormulaCell (aCell);
+    return m_aEvaluator.evaluateFormulaCellEnum (aCell);
   }
 
   /**
@@ -114,6 +115,6 @@ public class ExcelFormulaEvaluator
   @Override
   public String toString ()
   {
-    return new ToStringGenerator (this).append ("evaluator", m_aEvaluator).toString ();
+    return new ToStringGenerator (this).append ("evaluator", m_aEvaluator).getToString ();
   }
 }

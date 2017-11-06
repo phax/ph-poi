@@ -533,10 +533,10 @@ public final class WorkbookCreationHelper
   @Nonnull
   public ESuccess writeTo (@Nonnull @WillClose final OutputStream aOS)
   {
-    ValueEnforcer.notNull (aOS, "OutputStream");
-
     try
     {
+      ValueEnforcer.notNull (aOS, "OutputStream");
+
       if (m_nCreatedCellStyles > 0 && s_aLogger.isDebugEnabled ())
         s_aLogger.debug ("Writing Excel workbook with " + m_nCreatedCellStyles + " different cell styles");
 

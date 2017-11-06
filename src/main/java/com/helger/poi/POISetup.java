@@ -36,9 +36,9 @@ public final class POISetup
   static
   {
     // Workaround some annoying POI 3.10+ log messages
-    SystemProperties.setPropertyValue ("HSSFWorkbook.SheetInitialCapacity", Integer.toString (1));
-    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", Integer.toString (20));
-    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", Integer.toString (5));
+    SystemProperties.setPropertyValue ("HSSFWorkbook.SheetInitialCapacity", 1);
+    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", 20);
+    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", 5);
   }
 
   private POISetup ()
@@ -50,6 +50,11 @@ public final class POISetup
       SystemProperties.setPropertyValue (SYS_PROP_POI_LOGGER, POISLF4JLogger.class.getName ());
     else
       SystemProperties.removePropertyValue (SYS_PROP_POI_LOGGER);
+  }
+
+  public static boolean isInited ()
+  {
+    return s_aInited.get ();
   }
 
   public static void initOnDemand ()

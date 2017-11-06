@@ -63,20 +63,21 @@ public class ExcelStyle implements ICloneable <ExcelStyle>
   public ExcelStyle ()
   {}
 
-  public ExcelStyle (@Nonnull final ExcelStyle rhs)
+  public ExcelStyle (@Nonnull final ExcelStyle aOther)
   {
-    m_eAlign = rhs.m_eAlign;
-    m_eVAlign = rhs.m_eVAlign;
-    m_bWrapText = rhs.m_bWrapText;
-    m_sDataFormat = rhs.m_sDataFormat;
-    m_eFillBackgroundColor = rhs.m_eFillBackgroundColor;
-    m_eFillForegroundColor = rhs.m_eFillForegroundColor;
-    m_eFillPattern = rhs.m_eFillPattern;
-    m_eBorderTop = rhs.m_eBorderTop;
-    m_eBorderRight = rhs.m_eBorderRight;
-    m_eBorderBottom = rhs.m_eBorderBottom;
-    m_eBorderLeft = rhs.m_eBorderLeft;
-    m_nFontIndex = rhs.m_nFontIndex;
+    ValueEnforcer.notNull (aOther, "Other");
+    m_eAlign = aOther.m_eAlign;
+    m_eVAlign = aOther.m_eVAlign;
+    m_bWrapText = aOther.m_bWrapText;
+    m_sDataFormat = aOther.m_sDataFormat;
+    m_eFillBackgroundColor = aOther.m_eFillBackgroundColor;
+    m_eFillForegroundColor = aOther.m_eFillForegroundColor;
+    m_eFillPattern = aOther.m_eFillPattern;
+    m_eBorderTop = aOther.m_eBorderTop;
+    m_eBorderRight = aOther.m_eBorderRight;
+    m_eBorderBottom = aOther.m_eBorderBottom;
+    m_eBorderLeft = aOther.m_eBorderLeft;
+    m_nFontIndex = aOther.m_nFontIndex;
   }
 
   @Nullable
