@@ -3,7 +3,7 @@
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write typesafe Excel files.
 
 # News and noteworthy
-  * v5.0.0 - work in progress
+  * v5.0.0 - 2017-11-06
     * Updated to ph-commons 9.0.0
     * Removed deprecated methods
     * Updated to POI 3.17
@@ -30,7 +30,7 @@ Add the following to your pom.xml to use this artifact:
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>4.1.1</version>
+  <version>5.0.0</version>
 </dependency>
 ```
 
