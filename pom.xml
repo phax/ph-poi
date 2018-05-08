@@ -115,7 +115,7 @@
             <Export-Package>com.helger.poi.*</Export-Package>
             <Import-Package>!javax.annotation.*,*</Import-Package>
             <Require-Capability>osgi.extender; filter:="(osgi.extender=osgi.serviceloader.registrar)"</Require-Capability>
-            <Provide-Capability>osgi.serviceloader; osgi.serviceloader=com.helger.poi.config.ThirdPartyModuleProvider_ph_poi</Provide-Capability>
+            <Provide-Capability>osgi.serviceloader; osgi.serviceloader=com.helger.commons.thirdparty.IThirdPartyModuleProviderSPI</Provide-Capability>
           </instructions>
         </configuration>
       </plugin>
