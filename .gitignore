@@ -15,3 +15,6 @@ target/
 /**/.pmd
 /mock.xlsx
 /**/*.iml
+/.settings/ 
+/.project 
+/.classpath 
