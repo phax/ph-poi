@@ -55,7 +55,7 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 @Immutable
 public final class ExcelReadHelper
 {
-  private static final Logger s_aLogger = LoggerFactory.getLogger (ExcelReadHelper.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger (ExcelReadHelper.class);
 
   private ExcelReadHelper ()
   {}
@@ -97,7 +97,7 @@ public final class ExcelReadHelper
       }
       catch (final IOException ex2)
       {
-        s_aLogger.error ("Error trying to read XLSX file from " + aIIS, ex);
+        LOGGER.error ("Error trying to read XLSX file from " + aIIS, ex);
       }
       catch (final POIXMLException ex2)
       {
@@ -106,11 +106,11 @@ public final class ExcelReadHelper
     }
     catch (final NotOLE2FileException ex)
     {
-      s_aLogger.error ("Error trying to read non-Excel file from " + aIIS + ": " + ex.getMessage ());
+      LOGGER.error ("Error trying to read non-Excel file from " + aIIS + ": " + ex.getMessage ());
     }
     catch (final IOException ex)
     {
-      s_aLogger.error ("Error trying to read XLS file from " + aIIS, ex);
+      LOGGER.error ("Error trying to read XLS file from " + aIIS, ex);
     }
     finally
     {
@@ -213,7 +213,7 @@ public final class ExcelReadHelper
     final Object aValue = getCellValueObject (aCell);
     if (aValue != null && !(aValue instanceof Boolean))
     {
-      s_aLogger.warn ("Failed to get cell value as boolean: " + aValue.getClass ());
+      LOGGER.warn ("Failed to get cell value as boolean: " + aValue.getClass ());
       return null;
     }
     return (Boolean) aValue;
@@ -225,7 +225,7 @@ public final class ExcelReadHelper
     final Object aValue = getCellValueObject (aCell);
     if (aValue != null && !(aValue instanceof Number))
     {
-      s_aLogger.warn ("Failed to get cell value as number: " + aValue.getClass ());
+      LOGGER.warn ("Failed to get cell value as number: " + aValue.getClass ());
       return null;
     }
     return (Number) aValue;
@@ -242,7 +242,7 @@ public final class ExcelReadHelper
       catch (final RuntimeException ex)
       {
         // fall through
-        s_aLogger.warn ("Failed to get cell value as date: " + ex.getMessage ());
+        LOGGER.warn ("Failed to get cell value as date: " + ex.getMessage ());
       }
     return null;
   }
@@ -285,7 +285,7 @@ public final class ExcelReadHelper
       catch (final RuntimeException ex)
       {
         // fall through
-        s_aLogger.warn ("Failed to get cell formula: " + ex.getMessage ());
+        LOGGER.warn ("Failed to get cell formula: " + ex.getMessage ());
       }
     return null;
   }

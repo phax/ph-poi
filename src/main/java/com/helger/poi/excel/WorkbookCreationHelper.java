@@ -67,7 +67,7 @@ public final class WorkbookCreationHelper
   /** The BigInteger for the smallest possible long value */
   private static final BigInteger BIGINT_MIN_LONG = BigInteger.valueOf (Long.MIN_VALUE);
 
-  private static final Logger s_aLogger = LoggerFactory.getLogger (WorkbookCreationHelper.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger (WorkbookCreationHelper.class);
 
   private final Workbook m_aWB;
   private final CreationHelper m_aCreationHelper;
@@ -484,7 +484,7 @@ public final class WorkbookCreationHelper
       catch (final IllegalArgumentException ex)
       {
         // Happens if a column is too large
-        s_aLogger.warn ("Failed to resize column " + nCol + ": column too wide!");
+        LOGGER.warn ("Failed to resize column " + nCol + ": column too wide!");
       }
   }
 
@@ -537,8 +537,8 @@ public final class WorkbookCreationHelper
     {
       ValueEnforcer.notNull (aOS, "OutputStream");
 
-      if (m_nCreatedCellStyles > 0 && s_aLogger.isDebugEnabled ())
-        s_aLogger.debug ("Writing Excel workbook with " + m_nCreatedCellStyles + " different cell styles");
+      if (m_nCreatedCellStyles > 0 && LOGGER.isDebugEnabled ())
+        LOGGER.debug ("Writing Excel workbook with " + m_nCreatedCellStyles + " different cell styles");
 
       m_aWB.write (aOS);
       return ESuccess.SUCCESS;
@@ -546,7 +546,7 @@ public final class WorkbookCreationHelper
     catch (final IOException ex)
     {
       if (!StreamHelper.isKnownEOFException (ex))
-        s_aLogger.error ("Failed to write Excel workbook to output stream " + aOS, ex);
+        LOGGER.error ("Failed to write Excel workbook to output stream " + aOS, ex);
       return ESuccess.FAILURE;
     }
     finally
