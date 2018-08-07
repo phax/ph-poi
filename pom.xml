@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>1.10.3</version>
+    <version>1.10.5</version>
   </parent>
   <artifactId>ph-poi</artifactId>
   <version>5.0.1-SNAPSHOT</version>
@@ -64,7 +64,7 @@
       <dependency>
         <groupId>com.helger</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>9.1.3</version>
+        <version>9.1.4</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -84,13 +84,6 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <version>${poi.version}</version>
-      <exclusions>
-        <!-- transitive via xmlbeans - included in JDK6  -->
-        <exclusion>
-          <groupId>stax</groupId>
-          <artifactId>stax-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
