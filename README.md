@@ -6,6 +6,8 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 * v5.0.1 - work in progress
     * Fixed OSGI ServiceProvider configuration
+    * Added new class `CExcel` with some constants.
+    * Updated to XMLBeans 3.0.0
 * v5.0.0 - 2017-11-06
     * Updated to ph-commons 9.0.0
     * Removed deprecated methods
