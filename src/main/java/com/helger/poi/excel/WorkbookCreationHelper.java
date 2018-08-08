@@ -48,7 +48,9 @@ import org.slf4j.LoggerFactory;
 
 import com.helger.commons.ValueEnforcer;
 import com.helger.commons.datetime.PDTFactory;
+import com.helger.commons.io.EAppend;
 import com.helger.commons.io.file.FileHelper;
+import com.helger.commons.io.resource.IWritableResource;
 import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.state.ESuccess;
 import com.helger.poi.excel.style.ExcelStyle;
@@ -61,12 +63,6 @@ import com.helger.poi.excel.style.ExcelStyleCache;
  */
 public final class WorkbookCreationHelper
 {
-  /** The BigInteger for the largest possible long value */
-  private static final BigInteger BIGINT_MAX_LONG = BigInteger.valueOf (Long.MAX_VALUE);
-
-  /** The BigInteger for the smallest possible long value */
-  private static final BigInteger BIGINT_MIN_LONG = BigInteger.valueOf (Long.MIN_VALUE);
-
   private static final Logger LOGGER = LoggerFactory.getLogger (WorkbookCreationHelper.class);
 
   private final Workbook m_aWB;
@@ -200,6 +196,15 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Added a new cell as date/time.
+   * <p>
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
+   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
+   * after a date/time cell!
+   * <p>
+   * Important: Excel cannot correctly handle dates/times before
+   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
@@ -216,6 +221,15 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Added a new cell as date/time.
+   * <p>
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
+   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
+   * after a date/time cell!
+   * <p>
+   * Important: Excel cannot correctly handle dates/times before
+   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
@@ -232,6 +246,15 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Added a new cell as date/time.
+   * <p>
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
+   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
+   * after a date/time cell!
+   * <p>
+   * Important: Excel cannot correctly handle dates/times before
+   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   *
    * @param aValue
    *        The value to be set.
    * @return A new cell in the current row of the current sheet with the passed
@@ -246,6 +269,15 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Added a new cell as date/time.
+   * <p>
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
+   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
+   * after a date/time cell!
+   * <p>
+   * Important: Excel cannot correctly handle dates/times before
+   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
@@ -260,6 +292,15 @@ public final class WorkbookCreationHelper
   }
 
   /**
+   * Added a new cell as date/time.
+   * <p>
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
+   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
+   * after a date/time cell!
+   * <p>
+   * Important: Excel cannot correctly handle dates/times before
+   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed
@@ -285,7 +326,7 @@ public final class WorkbookCreationHelper
     if (aValue == null)
       return addCell ();
 
-    if (aValue.compareTo (BIGINT_MIN_LONG) >= 0 && aValue.compareTo (BIGINT_MAX_LONG) <= 0)
+    if (CExcel.canBeNumericValue (aValue))
       return addCell (aValue.longValue ());
 
     // Too large - add as string
@@ -451,8 +492,7 @@ public final class WorkbookCreationHelper
   }
 
   /**
-   * @return The number of cells in the current row in the current sheet,
-   *         0-based
+   * @return The number of cells in the current row in the current sheet, 0-based
    */
   @Nonnegative
   public int getCellCountInRow ()
@@ -520,6 +560,19 @@ public final class WorkbookCreationHelper
   public ESuccess writeTo (@Nonnull final File aFile)
   {
     return writeTo (FileHelper.getOutputStream (aFile));
+  }
+
+  /**
+   * Write the current workbook to a writable resource.
+   *
+   * @param aRes
+   *        The resource to write to. May not be <code>null</code>.
+   * @return {@link ESuccess}
+   */
+  @Nonnull
+  public ESuccess writeTo (@Nonnull final IWritableResource aRes)
+  {
+    return writeTo (aRes.getOutputStream (EAppend.TRUNCATE));
   }
 
   /**
