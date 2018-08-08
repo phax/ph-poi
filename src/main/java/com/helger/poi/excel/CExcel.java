@@ -18,6 +18,7 @@ package com.helger.poi.excel;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 
 import javax.annotation.Nonnull;
@@ -32,8 +33,11 @@ import com.helger.commons.datetime.PDTFactory;
  */
 public final class CExcel
 {
-  /** The threshold for Dates, that Excel can handle */
+  /** The minimum date Excel can handle as such */
   public static final LocalDate EXCEL_MINIMUM_DATE = PDTFactory.createLocalDate (1900, Month.JANUARY, 1);
+
+  /** The minimum datetime Excel can handle as such */
+  public static final LocalDateTime EXCEL_MINIMUM_DATE_TIME = EXCEL_MINIMUM_DATE.atStartOfDay ();
 
   /** Minimum number Excel can represent as a number */
   public static final BigInteger EXCEL_MINIMUM_NUMBER = CGlobal.BIGINT_MIN_LONG;
