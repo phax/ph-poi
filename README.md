@@ -4,7 +4,7 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
-* v5.0.1 - work in progress
+* v5.0.1 - 2018-08-09
     * Fixed OSGI ServiceProvider configuration
     * Added new class `CExcel` with some constants.
     * Updated to XMLBeans 3.0.0
@@ -30,12 +30,14 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 * v2.9.0 - 2014-08-25   
 
 # Maven usage
+
 Add the following to your pom.xml to use this artifact:
+
 ```xml
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>5.0.0</version>
+  <version>5.0.1</version>
 </dependency>
 ```
 
