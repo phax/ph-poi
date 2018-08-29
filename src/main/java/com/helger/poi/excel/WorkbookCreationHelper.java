@@ -43,6 +43,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.WorkbookUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -123,7 +124,7 @@ public final class WorkbookCreationHelper
   @Nonnull
   public Sheet createNewSheet (@Nullable final String sName)
   {
-    m_aLastSheet = sName == null ? m_aWB.createSheet () : m_aWB.createSheet (sName);
+    m_aLastSheet = sName == null ? m_aWB.createSheet () : m_aWB.createSheet (WorkbookUtil.createSafeSheetName (sName));
     m_nLastSheetRowIndex = 0;
     m_aLastRow = null;
     m_nLastRowCellIndex = 0;
@@ -492,7 +493,8 @@ public final class WorkbookCreationHelper
   }
 
   /**
-   * @return The number of cells in the current row in the current sheet, 0-based
+   * @return The number of cells in the current row in the current sheet,
+   *         0-based
    */
   @Nonnegative
   public int getCellCountInRow ()
