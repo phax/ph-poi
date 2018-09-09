@@ -27,7 +27,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.concurrent.Immutable;
 
-import org.apache.poi.POIXMLException;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.NotOLE2FileException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
@@ -99,10 +98,6 @@ public final class ExcelReadHelper
       {
         LOGGER.error ("Error trying to read XLSX file from " + aIIS, ex);
       }
-      catch (final POIXMLException ex2)
-      {
-        // No XLSX either -> no valid Excel file
-      }
     }
     catch (final NotOLE2FileException ex)
     {
@@ -152,7 +147,7 @@ public final class ExcelReadHelper
     if (aCell == null)
       return null;
 
-    final CellType eCellType = aCell.getCellTypeEnum ();
+    final CellType eCellType = aCell.getCellType ();
     switch (eCellType)
     {
       case NUMERIC:
@@ -162,7 +157,7 @@ public final class ExcelReadHelper
       case BOOLEAN:
         return Boolean.valueOf (aCell.getBooleanCellValue ());
       case FORMULA:
-        final CellType eFormulaResultType = aCell.getCachedFormulaResultTypeEnum ();
+        final CellType eFormulaResultType = aCell.getCachedFormulaResultType ();
         switch (eFormulaResultType)
         {
           case NUMERIC:
@@ -300,7 +295,7 @@ public final class ExcelReadHelper
   {
     if (aCell == null)
       return false;
-    final CellType eType = aCell.getCellTypeEnum ();
+    final CellType eType = aCell.getCellType ();
     return eType == CellType.BLANK || eType == CellType.NUMERIC || eType == CellType.FORMULA;
   }
 }

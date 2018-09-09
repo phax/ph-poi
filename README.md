@@ -4,6 +4,8 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
+* v5.0.2 - work in progress
+    * Updated to POI 4.0.0
 * v5.0.1 - 2018-08-09
     * Fixed OSGI ServiceProvider configuration
     * Added new class `CExcel` with some constants.

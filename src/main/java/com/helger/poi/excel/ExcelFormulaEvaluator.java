@@ -85,7 +85,7 @@ public class ExcelFormulaEvaluator
   @Nullable
   public CellType evaluateFormulaCell (@Nonnull final Cell aCell)
   {
-    return m_aEvaluator.evaluateFormulaCellEnum (aCell);
+    return m_aEvaluator.evaluateFormulaCell (aCell);
   }
 
   /**

@@ -24,7 +24,6 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.annotation.WillClose;
 
-import org.apache.poi.POIXMLException;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
@@ -120,7 +119,7 @@ public enum EExcelVersion implements IHasID <String>
         // Closes the input stream internally
         return new XSSFWorkbook (aIS);
       }
-      catch (final POIXMLException | NotOfficeXmlFileException | IOException ex)
+      catch (final NotOfficeXmlFileException | IOException ex)
       {
         // No XLSX
         return null;

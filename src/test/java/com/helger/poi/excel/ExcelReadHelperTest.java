@@ -63,70 +63,70 @@ public final class ExcelReadHelperTest
 
     Cell aCell = aSheet1.getRow (0).getCell (0);
     assertNotNull (aCell);
-    assertEquals (CellType.STRING, aCell.getCellTypeEnum ());
+    assertEquals (CellType.STRING, aCell.getCellType ());
     assertEquals ("A1", aCell.getStringCellValue ());
 
     aCell = aSheet1.getRow (1).getCell (1);
     assertNotNull (aCell);
-    assertEquals (CellType.STRING, aCell.getCellTypeEnum ());
+    assertEquals (CellType.STRING, aCell.getCellType ());
     assertEquals ("B2", aCell.getStringCellValue ());
 
     aCell = aSheet1.getRow (2).getCell (2);
     assertNotNull (aCell);
-    assertEquals (CellType.STRING, aCell.getCellTypeEnum ());
+    assertEquals (CellType.STRING, aCell.getCellType ());
     assertEquals ("C\n3", aCell.getStringCellValue ());
 
     aCell = aSheet1.getRow (3).getCell (3);
     assertNotNull (aCell);
-    assertEquals (CellType.NUMERIC, aCell.getCellTypeEnum ());
+    assertEquals (CellType.NUMERIC, aCell.getCellType ());
     assertEquals (0.00001, 4.4, aCell.getNumericCellValue ());
 
     for (int i = 0; i < 6; ++i)
     {
       aCell = aSheet3.getRow (i).getCell (i);
       assertNotNull (aCell);
-      assertEquals (CellType.NUMERIC, aCell.getCellTypeEnum ());
+      assertEquals (CellType.NUMERIC, aCell.getCellType ());
       assertEquals (0.00001, i + 1, aCell.getNumericCellValue ());
     }
 
     // ="abc"
     aCell = aSheet1.getRow (4).getCell (0);
     assertNotNull (aCell);
-    assertEquals (CellType.FORMULA, aCell.getCellTypeEnum ());
+    assertEquals (CellType.FORMULA, aCell.getCellType ());
     assertEquals ("\"abc\"", aCell.getCellFormula ());
     assertEquals ("abc", aCell.getStringCellValue ());
     CellValue aEvaluated = new ExcelFormulaEvaluator (aWB, IStabilityClassifier.TOTALLY_IMMUTABLE).evaluate (aCell);
-    assertEquals (CellType.STRING, aEvaluated.getCellTypeEnum ());
+    assertEquals (CellType.STRING, aEvaluated.getCellType ());
     assertEquals ("abc", aEvaluated.getStringValue ());
 
     // =4711
     aCell = aSheet1.getRow (5).getCell (1);
     assertNotNull (aCell);
-    assertEquals (CellType.FORMULA, aCell.getCellTypeEnum ());
+    assertEquals (CellType.FORMULA, aCell.getCellType ());
     assertEquals ("4711", aCell.getCellFormula ());
     assertEquals (0.00001, 4711, aCell.getNumericCellValue ());
     aEvaluated = new ExcelFormulaEvaluator (aWB, IStabilityClassifier.TOTALLY_IMMUTABLE).evaluate (aCell);
-    assertEquals (CellType.NUMERIC, aEvaluated.getCellTypeEnum ());
+    assertEquals (CellType.NUMERIC, aEvaluated.getCellType ());
     assertEquals (0.00001, 4711, aEvaluated.getNumberValue ());
 
     // =TRUE
     aCell = aSheet1.getRow (6).getCell (2);
     assertNotNull (aCell);
-    assertEquals (CellType.FORMULA, aCell.getCellTypeEnum ());
+    assertEquals (CellType.FORMULA, aCell.getCellType ());
     assertEquals ("TRUE", aCell.getCellFormula ());
     assertTrue (aCell.getBooleanCellValue ());
     aEvaluated = new ExcelFormulaEvaluator (aWB, IStabilityClassifier.TOTALLY_IMMUTABLE).evaluate (aCell);
-    assertEquals (CellType.BOOLEAN, aEvaluated.getCellTypeEnum ());
+    assertEquals (CellType.BOOLEAN, aEvaluated.getCellType ());
     assertTrue (aEvaluated.getBooleanValue ());
 
     // Refers to cell at 6/2
     aCell = aSheet1.getRow (7).getCell (3);
     assertNotNull (aCell);
-    assertEquals (CellType.FORMULA, aCell.getCellTypeEnum ());
+    assertEquals (CellType.FORMULA, aCell.getCellType ());
     assertEquals ("C7", aCell.getCellFormula ());
     assertTrue (aCell.getBooleanCellValue ());
     aEvaluated = new ExcelFormulaEvaluator (aWB, IStabilityClassifier.TOTALLY_IMMUTABLE).evaluate (aCell);
-    assertEquals (CellType.BOOLEAN, aEvaluated.getCellTypeEnum ());
+    assertEquals (CellType.BOOLEAN, aEvaluated.getCellType ());
     assertTrue (aEvaluated.getBooleanValue ());
   }
 

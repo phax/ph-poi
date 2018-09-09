@@ -20,11 +20,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.nio.charset.StandardCharsets;
+
 import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
 import com.helger.commons.io.resource.ClassPathResource;
 import com.helger.commons.io.resource.IReadableResource;
+import com.helger.commons.io.stream.NonBlockingByteArrayInputStream;
 
 /**
  * Test class for class {@link EExcelVersion}.
@@ -55,6 +58,8 @@ public final class EExcelVersionTest
     assertNotNull (aWB);
     aWB = EExcelVersion.XLS.readWorkbook (aXLSX.getInputStream ());
     assertNull (aWB);
+    aWB = EExcelVersion.XLS.readWorkbook (new NonBlockingByteArrayInputStream ("abc".getBytes (StandardCharsets.ISO_8859_1)));
+    assertNull (aWB);
 
     final IReadableResource aXLS = new ClassPathResource ("excel/test1.xls");
     assertTrue (aXLS.exists ());
@@ -62,5 +67,7 @@ public final class EExcelVersionTest
     assertNull (aWB);
     aWB = EExcelVersion.XLS.readWorkbook (aXLS.getInputStream ());
     assertNotNull (aWB);
+    aWB = EExcelVersion.XLSX.readWorkbook (new NonBlockingByteArrayInputStream ("abc".getBytes (StandardCharsets.ISO_8859_1)));
+    assertNull (aWB);
   }
 }
