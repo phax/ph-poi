@@ -13,6 +13,8 @@ aCBmEMWg1TY1VNmvrrqDwH6Xbr8mH0zfpTiBRuS5M2UynW51QV353vc3i/FWiuaf/aqWBtKRRos2n9+1
     
 jdk:
   - oraclejdk8
+  - oraclejdk11
+  - openjdk11
   
 install:
   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V -U -P jdeps
@@ -22,7 +24,7 @@ script:
   
 cache:
   directories:
-  - $HOME/.m2
+    - $HOME/.m2
 
 after_success:
   - mvn deploy --settings travis-settings.xml -DskipTests=true -B -P travis-deploy
