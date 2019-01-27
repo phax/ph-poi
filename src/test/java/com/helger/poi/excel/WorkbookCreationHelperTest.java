@@ -30,29 +30,31 @@ public final class WorkbookCreationHelperTest
   @Test
   public void testAddCellFormula ()
   {
-    final WorkbookCreationHelper aWBCH = new WorkbookCreationHelper (EExcelVersion.XLSX);
-    aWBCH.createNewSheet ("Test sheet1");
-    aWBCH.addRow ();
-    // Since 3.14 invalid formulas can be set without Exception
-    aWBCH.addCellFormula ("ABC(A1)");
-
-    // Test merging
+    try (final WorkbookCreationHelper aWBCH = new WorkbookCreationHelper (EExcelVersion.XLSX))
     {
+      aWBCH.createNewSheet ("Test sheet1");
       aWBCH.addRow ();
-      aWBCH.addCell ("Col1");
-      aWBCH.addCell ("Col2");
-      aWBCH.addCell ("Col3");
-      aWBCH.addCell ("Col4");
-      aWBCH.addCell ("Col5");
+      // Since 3.14 invalid formulas can be set without Exception
+      aWBCH.addCellFormula ("ABC(A1)");
 
-      // Keep "Col1"
-      aWBCH.addMergeRegionInCurrentRow (0, 1);
+      // Test merging
+      {
+        aWBCH.addRow ();
+        aWBCH.addCell ("Col1");
+        aWBCH.addCell ("Col2");
+        aWBCH.addCell ("Col3");
+        aWBCH.addCell ("Col4");
+        aWBCH.addCell ("Col5");
 
-      // Keep "Col3"
-      aWBCH.addMergeRegionInCurrentRow (2, 4);
+        // Keep "Col1"
+        aWBCH.addMergeRegionInCurrentRow (0, 1);
+
+        // Keep "Col3"
+        aWBCH.addMergeRegionInCurrentRow (2, 4);
+      }
+
+      // Write to dummy file
+      aWBCH.writeTo (new File ("mock.xlsx"));
     }
-
-    // Write to dummy file
-    aWBCH.writeTo (new File ("mock.xlsx"));
   }
 }

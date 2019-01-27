@@ -19,6 +19,7 @@ package com.helger.poi.excel;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UncheckedIOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -52,6 +53,7 @@ import com.helger.commons.datetime.PDTFactory;
 import com.helger.commons.io.EAppend;
 import com.helger.commons.io.file.FileHelper;
 import com.helger.commons.io.resource.IWritableResource;
+import com.helger.commons.io.stream.NonBlockingByteArrayOutputStream;
 import com.helger.commons.io.stream.StreamHelper;
 import com.helger.commons.state.ESuccess;
 import com.helger.poi.excel.style.ExcelStyle;
@@ -62,7 +64,7 @@ import com.helger.poi.excel.style.ExcelStyleCache;
  *
  * @author Philip Helger
  */
-public final class WorkbookCreationHelper
+public final class WorkbookCreationHelper implements AutoCloseable
 {
   private static final Logger LOGGER = LoggerFactory.getLogger (WorkbookCreationHelper.class);
 
@@ -86,6 +88,18 @@ public final class WorkbookCreationHelper
   {
     m_aWB = ValueEnforcer.notNull (aWB, "Workbook");
     m_aCreationHelper = aWB.getCreationHelper ();
+  }
+
+  public void close ()
+  {
+    try
+    {
+      m_aWB.close ();
+    }
+    catch (final IOException ex)
+    {
+      throw new UncheckedIOException (ex);
+    }
   }
 
   @Nonnull
@@ -607,6 +621,22 @@ public final class WorkbookCreationHelper
     finally
     {
       StreamHelper.close (aOS);
+    }
+  }
+
+  /**
+   * Helper method to get the whole workbook as a single byte array.
+   *
+   * @return <code>null</code> if writing failed. See log files for details.
+   */
+  @Nullable
+  public byte [] getAsByteArray ()
+  {
+    try (final NonBlockingByteArrayOutputStream aBAOS = new NonBlockingByteArrayOutputStream ())
+    {
+      if (writeTo (aBAOS).isFailure ())
+        return null;
+      return aBAOS.getBufferOrCopy ();
     }
   }
 }
