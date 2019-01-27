@@ -4,7 +4,7 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
-* v5.0.4 - work in progress
+* v5.0.4 - 2019-01-27
     * Updated to POI 4.0.1
     * `WorkbookCreationHelper` now implements `AutoClosable`
 * v5.0.3 - 2018-11-22
@@ -44,7 +44,7 @@ Add the following to your pom.xml to use this artifact:
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>5.0.3</version>
+  <version>5.0.4</version>
 </dependency>
 ```
 
