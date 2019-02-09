@@ -4,7 +4,7 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
-* v5.0.4 - 2019-01-27
+* v5.0.4 - 2019-02-09
     * Updated to POI 4.0.1
     * `WorkbookCreationHelper` now implements `AutoClosable`
 * v5.0.3 - 2018-11-22
