@@ -36,7 +36,6 @@ import javax.annotation.WillClose;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.RichTextString;
@@ -188,6 +187,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
     if (m_aLastRow == null)
       throw new IllegalStateException ("A row needs to be created before a cell can be added! Call addRow");
     m_aLastCell = m_aLastRow.createCell (m_nLastRowCellIndex++);
+    m_aLastCell.setBlank ();
 
     // Check for the maximum cell index in this sheet
     if (m_nLastRowCellIndex > m_nMaxCellIndex)
@@ -205,7 +205,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (final boolean bValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.BOOLEAN);
     aCell.setCellValue (bValue);
     return aCell;
   }
@@ -229,7 +228,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (@Nullable final Calendar aValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.NUMERIC);
     if (aValue != null)
       aCell.setCellValue (aValue);
     return aCell;
@@ -254,7 +252,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (@Nullable final Date aValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.NUMERIC);
     if (aValue != null)
       aCell.setCellValue (aValue);
     return aCell;
@@ -358,7 +355,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (final double dValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.NUMERIC);
     aCell.setCellValue (dValue);
     return aCell;
   }
@@ -396,7 +392,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (@Nullable final RichTextString aValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.STRING);
     if (aValue != null)
       aCell.setCellValue (aValue);
     return aCell;
@@ -412,7 +407,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCell (@Nullable final String sValue)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.STRING);
     if (sValue != null)
       aCell.setCellValue (sValue);
     return aCell;
@@ -428,7 +422,6 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public Cell addCellFormula (@Nullable final String sFormula)
   {
     final Cell aCell = addCell ();
-    aCell.setCellType (CellType.FORMULA);
     aCell.setCellFormula (sFormula);
     return aCell;
   }

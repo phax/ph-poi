@@ -58,7 +58,7 @@ public class POISLF4JLogger extends SystemOutLogger
    *        An exception to be logged
    */
   @Override
-  protected void _log (final int nLevel, @Nonnull final Object aMsg, @Nullable final Throwable aThrowable)
+  public void _log (final int nLevel, @Nonnull final Object aMsg, @Nullable final Throwable aThrowable)
   {
     // >= 7
     if (nLevel >= ERROR)
