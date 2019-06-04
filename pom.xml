@@ -25,7 +25,7 @@
     <version>1.10.8</version>
   </parent>
   <artifactId>ph-poi</artifactId>
-  <version>5.0.5-SNAPSHOT</version>
+  <version>5.0.5</version>
   <packaging>bundle</packaging>
   <name>ph-poi</name>
   <description>Wrapper around Apache POI</description>
@@ -44,7 +44,7 @@
     <connection>scm:git:git@github.com:phax/ph-poi.git</connection>
     <developerConnection>scm:git:git@github.com:phax/ph-poi.git</developerConnection>
     <url>http://github.com/phax/ph-poi</url>
-    <tag>HEAD</tag>
+    <tag>ph-poi-5.0.5</tag>
   </scm>
 
   <organization>
