@@ -4,6 +4,8 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # News and noteworthy
 
+* v5.0.6 - work in progress
+    * Updated to commons-compress 1.19
 * v5.0.5 - 2019-06-04
     * Updated to XMLBeans 3.1.0
     * Updated to POI 4.1.0
