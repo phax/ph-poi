@@ -2,10 +2,23 @@
 
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write typesafe Excel files.
 
+# Maven usage
+
+Add the following to your pom.xml to use this artifact:
+
+```xml
+<dependency>
+  <groupId>com.helger</groupId>
+  <artifactId>ph-poi</artifactId>
+  <version>5.0.6</version>
+</dependency>
+```
+
 # News and noteworthy
 
 * v5.0.7 - work in progress
     * Updated to commons-compress 1.20
+    * Updated to POI 4.1.2
 * v5.0.6 - 2019-10-21
     * Updated to commons-compress 1.19
     * Updated to POI 4.1.1
@@ -43,18 +56,6 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 * v2.9.2 - 2015-01-13
 * v2.9.1 - 2014-10-30
 * v2.9.0 - 2014-08-25   
-
-# Maven usage
-
-Add the following to your pom.xml to use this artifact:
-
-```xml
-<dependency>
-  <groupId>com.helger</groupId>
-  <artifactId>ph-poi</artifactId>
-  <version>5.0.6</version>
-</dependency>
-```
 
 ---
 
