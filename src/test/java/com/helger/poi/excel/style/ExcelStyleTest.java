@@ -45,8 +45,7 @@ public final class ExcelStyleTest
     CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e, new ExcelStyle ());
     e.setBorder (BorderStyle.DASH_DOT);
     CommonsTestHelper.testDefaultImplementationWithDifferentContentObject (e, new ExcelStyle ());
-    CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e,
-                                                                       new ExcelStyle ().setBorder (BorderStyle.DASH_DOT));
+    CommonsTestHelper.testDefaultImplementationWithEqualContentObject (e, new ExcelStyle ().setBorder (BorderStyle.DASH_DOT));
   }
 
   @Test

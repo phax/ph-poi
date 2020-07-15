@@ -271,9 +271,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return new ExcelStyle (this);
   }
 
-  public void fillCellStyle (@Nonnull final Workbook aWB,
-                             @Nonnull final CellStyle aCS,
-                             @Nonnull final CreationHelper aCreationHelper)
+  public void fillCellStyle (@Nonnull final Workbook aWB, @Nonnull final CellStyle aCS, @Nonnull final CreationHelper aCreationHelper)
   {
     if (m_eAlign != null)
       aCS.setAlignment (m_eAlign);
