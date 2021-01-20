@@ -18,6 +18,7 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 * v5.1.0 - 2021-01-20
     * Updated to POI 5.0.0
+    * Excluded support for SVG and PDF to lower dependency weight
 * v5.0.7 - 2020-02-17
     * Updated to commons-compress 1.20
     * Updated to POI 4.1.2

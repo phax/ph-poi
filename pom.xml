@@ -123,6 +123,18 @@
     <dependency>
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
+      <exclusions>
+        <!-- required for SVG support -->
+        <exclusion>
+          <groupId>org.apache.xmlgraphics</groupId>
+          <artifactId>batik-all</artifactId>
+        </exclusion>
+        <!-- required for PDF support -->
+        <exclusion>
+          <groupId>de.rototor.pdfbox</groupId>
+          <artifactId>graphics2d</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
