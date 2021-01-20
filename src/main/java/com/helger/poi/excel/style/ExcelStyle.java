@@ -262,7 +262,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
   public ExcelStyle setFont (@Nonnull final Font aFont)
   {
     ValueEnforcer.notNull (aFont, "Font");
-    return setFontIndex (aFont.getIndexAsInt ());
+    return setFontIndex (aFont.getIndex ());
   }
 
   @Nonnull

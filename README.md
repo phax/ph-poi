@@ -4,18 +4,20 @@ Java library with some Apache POI improvements. Also adds some helper functions 
 
 # Maven usage
 
-Add the following to your pom.xml to use this artifact:
+Add the following to your pom.xml to use this artifact, replacing `x.y.z` with the real version:
 
 ```xml
 <dependency>
   <groupId>com.helger</groupId>
   <artifactId>ph-poi</artifactId>
-  <version>5.0.7</version>
+  <version>x.y.z</version>
 </dependency>
 ```
 
 # News and noteworthy
 
+* v5.1.0 - 2021-01-20
+    * Updated to POI 5.0.0
 * v5.0.7 - 2020-02-17
     * Updated to commons-compress 1.20
     * Updated to POI 4.1.2
