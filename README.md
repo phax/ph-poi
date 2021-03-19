@@ -16,6 +16,8 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 # News and noteworthy
 
+* v5.2.0 - work in progress
+    * Updated to ph-commons 10
 * v5.1.0 - 2021-01-28
     * Updated to POI 5.0.0
     * Excluded support for SVG and PDF to lower dependency weight
