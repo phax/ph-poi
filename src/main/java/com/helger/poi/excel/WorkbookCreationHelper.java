@@ -146,14 +146,19 @@ public final class WorkbookCreationHelper implements AutoCloseable
     return m_aLastSheet;
   }
 
+  private void _ensureSheet ()
+  {
+    if (m_aLastSheet == null)
+      throw new IllegalStateException ("A sheet needs to be present to perform this! Call createNewSheet");
+  }
+
   /**
    * @return A new row in the current sheet.
    */
   @Nonnull
   public Row addRow ()
   {
-    if (m_aLastSheet == null)
-      throw new IllegalStateException ("A sheet needs to be created before a row can be added! Call createNewSheet");
+    _ensureSheet ();
     m_aLastRow = m_aLastSheet.createRow (m_nLastSheetRowIndex++);
     m_nLastRowCellIndex = 0;
     m_aLastCell = null;
@@ -178,14 +183,19 @@ public final class WorkbookCreationHelper implements AutoCloseable
     return m_nLastSheetRowIndex;
   }
 
+  private void _ensureRow ()
+  {
+    if (m_aLastRow == null)
+      throw new IllegalStateException ("A row needs to be present to perform this! Call addRow");
+  }
+
   /**
    * @return A new cell in the current row of the current sheet
    */
   @Nonnull
   public Cell addCell ()
   {
-    if (m_aLastRow == null)
-      throw new IllegalStateException ("A row needs to be created before a cell can be added! Call addRow");
+    _ensureRow ();
     m_aLastCell = m_aLastRow.createCell (m_nLastRowCellIndex++);
     m_aLastCell.setBlank ();
 
@@ -463,7 +473,14 @@ public final class WorkbookCreationHelper implements AutoCloseable
                              @Nonnegative final int nFirstCol,
                              @Nonnegative final int nLastCol)
   {
+    _ensureSheet ();
     return m_aLastSheet.addMergedRegion (new CellRangeAddress (nFirstRow, nLastRow, nFirstCol, nLastCol));
+  }
+
+  private void _ensureCell ()
+  {
+    if (m_aLastCell == null)
+      throw new IllegalStateException ("A cell needs to be present to perform this! Call addCell");
   }
 
   /**
@@ -475,8 +492,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   public void addCellStyle (@Nonnull final ExcelStyle aExcelStyle)
   {
     ValueEnforcer.notNull (aExcelStyle, "ExcelStyle");
-    if (m_aLastCell == null)
-      throw new IllegalStateException ("No cell present for current row!");
+    _ensureCell ();
 
     CellStyle aCellStyle = m_aStyleCache.getCellStyle (aExcelStyle);
     if (aCellStyle == null)
@@ -524,6 +540,8 @@ public final class WorkbookCreationHelper implements AutoCloseable
    */
   public void autoSizeAllColumns ()
   {
+    _ensureSheet ();
+
     // auto-adjust all columns (except description and image description)
     for (short nCol = 0; nCol < m_nMaxCellIndex; ++nCol)
       try
@@ -546,12 +564,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   }
 
   /**
+   * Add an auto filter on all columns in the current sheet.
+   *
    * @param nRowIndex
-   *        The 0-based index of the row, where to set the filter. Add an auto
-   *        filter on all columns in the current sheet.
+   *        The 0-based index of the row, where to set the filter.
    */
   public void autoFilterAllColumns (@Nonnegative final int nRowIndex)
   {
+    _ensureSheet ();
+
     // Set auto filter on all columns
     // Use the specified row (param1, param2)
     // From first column to last column (param3, param4)
