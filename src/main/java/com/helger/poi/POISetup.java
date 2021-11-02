@@ -31,7 +31,7 @@ import com.helger.commons.system.SystemProperties;
 public final class POISetup
 {
   public static final String SYS_PROP_POI_LOGGER = "org.apache.poi.util.POILogger";
-  private static final AtomicBoolean s_aInited = new AtomicBoolean (false);
+  private static final AtomicBoolean INITED = new AtomicBoolean (false);
 
   static
   {
@@ -54,12 +54,12 @@ public final class POISetup
 
   public static boolean isInited ()
   {
-    return s_aInited.get ();
+    return INITED.get ();
   }
 
   public static void initOnDemand ()
   {
-    if (s_aInited.compareAndSet (false, true))
+    if (INITED.compareAndSet (false, true))
       enableCustomLogger (true);
   }
 }
