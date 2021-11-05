@@ -16,8 +16,6 @@
  */
 package com.helger.poi;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 import javax.annotation.concurrent.ThreadSafe;
 
 import com.helger.commons.system.SystemProperties;
@@ -30,9 +28,6 @@ import com.helger.commons.system.SystemProperties;
 @ThreadSafe
 public final class POISetup
 {
-  public static final String SYS_PROP_POI_LOGGER = "org.apache.poi.util.POILogger";
-  private static final AtomicBoolean INITED = new AtomicBoolean (false);
-
   static
   {
     // Workaround some annoying POI 3.10+ log messages
@@ -44,22 +39,8 @@ public final class POISetup
   private POISetup ()
   {}
 
-  public static void enableCustomLogger (final boolean bEnable)
-  {
-    if (bEnable)
-      SystemProperties.setPropertyValue (SYS_PROP_POI_LOGGER, POISLF4JLogger.class.getName ());
-    else
-      SystemProperties.removePropertyValue (SYS_PROP_POI_LOGGER);
-  }
-
-  public static boolean isInited ()
-  {
-    return INITED.get ();
-  }
-
   public static void initOnDemand ()
   {
-    if (INITED.compareAndSet (false, true))
-      enableCustomLogger (true);
+    // empty
   }
 }
