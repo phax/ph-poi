@@ -16,6 +16,7 @@
  */
 package com.helger.poi;
 
+import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 
 import com.helger.commons.system.SystemProperties;
@@ -28,12 +29,18 @@ import com.helger.commons.system.SystemProperties;
 @ThreadSafe
 public final class POISetup
 {
+  private static void _setValue (@Nonnull final String sKey, final int nValue)
+  {
+    if (!SystemProperties.containsPropertyName (sKey))
+      SystemProperties.setPropertyValue (sKey, nValue);
+  }
+
   static
   {
     // Workaround some annoying POI 3.10+ log messages
-    SystemProperties.setPropertyValue ("HSSFWorkbook.SheetInitialCapacity", 1);
-    SystemProperties.setPropertyValue ("HSSFSheet.RowInitialCapacity", 20);
-    SystemProperties.setPropertyValue ("HSSFRow.ColInitialCapacity", 5);
+    _setValue ("HSSFWorkbook.SheetInitialCapacity", 1);
+    _setValue ("HSSFSheet.RowInitialCapacity", 20);
+    _setValue ("HSSFRow.ColInitialCapacity", 5);
   }
 
   private POISetup ()
