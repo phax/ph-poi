@@ -1,5 +1,8 @@
 # ph-poi
 
+[![javadoc](https://javadoc.io/badge2/com.helger/ph-poi/javadoc.svg)](https://javadoc.io/doc/com.helger/ph-poi)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.helger/ph-poi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.helger/ph-poi) 
+
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write type safe Excel files.
 
 # Maven usage
