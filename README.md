@@ -19,7 +19,9 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 # News and noteworthy
 
-* v5.3.3 - work in progress
+* v6.0.0 - 2022-09-14
+    * Using Java 11 as the baseline
+    * Updated to ph-commons 11
     * Updated to POI 5.2.2
 * v5.3.2 - 2022-03-06
     * Updated to POI 5.2.1
