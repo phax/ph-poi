@@ -21,6 +21,7 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 * v6.0.1 - work in progress
     * Updated to POI 5.2.3
+    * Updated to commons-compress 1.22
 * v6.0.0 - 2022-09-14
     * Using Java 11 as the baseline
     * Updated to ph-commons 11
