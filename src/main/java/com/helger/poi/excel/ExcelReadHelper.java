@@ -52,7 +52,6 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
  * @author Philip Helger
  */
 @Immutable
-@SuppressFBWarnings ("JCIP_FIELD_ISNT_FINAL_IN_IMMUTABLE_CLASS")
 public final class ExcelReadHelper
 {
   private static final Logger LOGGER = LoggerFactory.getLogger (ExcelReadHelper.class);
