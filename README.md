@@ -20,7 +20,8 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 # News and noteworthy
 
 * v6.0.2 - work in progress
-    * Updated to POI 5.2.4
+    * Updated to POI 5.2.5
+    * Updated to commons-compress 1.25
 * v6.0.1 - 2023-07-31
     * Updated to POI 5.2.3
     * Updated to commons-compress 1.23
