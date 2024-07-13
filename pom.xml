@@ -62,7 +62,7 @@
   </developers>
 
   <properties>
-    <poi.version>5.2.5</poi.version>
+    <poi.version>5.3.0</poi.version>
   </properties>
 
   <dependencyManagement>
@@ -77,12 +77,12 @@
       <dependency>
         <groupId>org.apache.xmlbeans</groupId>
         <artifactId>xmlbeans</artifactId>
-        <version>5.2.0</version>
+        <version>5.2.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-compress</artifactId>
-        <version>1.26.1</version>
+        <version>1.26.2</version>
       </dependency>
       <dependency>
         <groupId>commons-codec</groupId>
@@ -93,6 +93,11 @@
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-math3</artifactId>
         <version>3.6.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>2.23.1</version>
       </dependency>
       <dependency>
         <groupId>org.apache.poi</groupId>
@@ -147,6 +152,12 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <!-- Forward Log4J to SLF4J -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-to-slf4j</artifactId>
       <scope>test</scope>
     </dependency>
     <dependency>

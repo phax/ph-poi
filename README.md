@@ -19,6 +19,9 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 # News and noteworthy
 
+* v6.0.3 - 2024-07-17
+    * Updated to POI 5.3.0
+    * Updated to commons-compress 1.26.2
 * v6.0.2 - 2024-03-27
     * Updated to POI 5.2.5
     * Updated to commons-compress 1.25
