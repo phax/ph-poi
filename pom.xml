@@ -63,6 +63,7 @@
 
   <properties>
     <poi.version>5.3.0</poi.version>
+    <spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
   </properties>
 
   <dependencyManagement>
@@ -70,7 +71,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>11.1.6</version>
+        <version>11.1.8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -145,6 +146,7 @@
     <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs-annotations</artifactId>
+      <version>${spotbugs-annotations.version}</version>
       <scope>compile</scope>
       <optional>true</optional>
     </dependency>
