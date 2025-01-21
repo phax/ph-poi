@@ -63,7 +63,7 @@
 
   <properties>
     <poi.version>5.4.0</poi.version>
-    <spotbugs-annotations.version>4.8.6</spotbugs-annotations.version>
+    <spotbugs-annotations.version>4.9.0</spotbugs-annotations.version>
   </properties>
 
   <dependencyManagement>
