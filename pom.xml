@@ -22,7 +22,7 @@
   <parent>
     <groupId>com.helger</groupId>
     <artifactId>parent-pom</artifactId>
-    <version>2.0.8</version>
+    <version>2.1.2</version>
   </parent>
   <artifactId>ph-poi</artifactId>
   <version>6.0.5-SNAPSHOT</version>
@@ -62,8 +62,8 @@
   </developers>
 
   <properties>
-    <poi.version>5.4.0</poi.version>
-    <spotbugs-annotations.version>4.9.2</spotbugs-annotations.version>
+    <poi.version>5.4.1</poi.version>
+    <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
   </properties>
 
   <dependencyManagement>
