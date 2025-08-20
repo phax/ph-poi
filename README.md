@@ -19,77 +19,108 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 # News and noteworthy
 
-* v6.0.5 - work in progress
-    * Updated to POI 5.4.1
-* v6.0.4 - 2025-01-25
-    * Updated to POI 5.4.0
-    * Updated to commons-compress 1.27.1
-* v6.0.3 - 2024-07-17
-    * Updated to POI 5.3.0
-    * Updated to commons-compress 1.26.2
-* v6.0.2 - 2024-03-27
-    * Updated to POI 5.2.5
-    * Updated to commons-compress 1.25
-* v6.0.1 - 2023-07-31
-    * Updated to POI 5.2.3
-    * Updated to commons-compress 1.23
-    * Updated to ph-commons 11.1.0
-* v6.0.0 - 2022-09-14
-    * Using Java 11 as the baseline
-    * Updated to ph-commons 11
-    * Updated to POI 5.2.2
-* v5.3.2 - 2022-03-06
-    * Updated to POI 5.2.1
-* v5.3.1 - 2022-02-01
-    * Updated to POI 5.2.0
-* v5.3.0 - 2021-11-05
-    * Updated to POI 5.1.0
-    * Removed the class `POISLF4JLogger`
-* v5.2.0 - 2021-03-21
-    * Updated to ph-commons 10
-* v5.1.0 - 2021-01-28
-    * Updated to POI 5.0.0
-    * Excluded support for SVG and PDF to lower dependency weight
-* v5.0.7 - 2020-02-17
-    * Updated to commons-compress 1.20
-    * Updated to POI 4.1.2
-* v5.0.6 - 2019-10-21
-    * Updated to commons-compress 1.19
-    * Updated to POI 4.1.1
-* v5.0.5 - 2019-06-04
-    * Updated to XMLBeans 3.1.0
-    * Updated to POI 4.1.0
-* v5.0.4 - 2019-02-09
-    * Updated to POI 4.0.1
-    * `WorkbookCreationHelper` now implements `AutoClosable`
-* v5.0.3 - 2018-11-22
-    * Updated to ph-commons 9.2.0
-* v5.0.2 - 2018-09-10
-    * Updated to POI 4.0.0
-* v5.0.1 - 2018-08-09
-    * Fixed OSGI ServiceProvider configuration
-    * Added new class `CExcel` with some constants.
-    * Updated to XMLBeans 3.0.0
-* v5.0.0 - 2017-11-06
-    * Updated to ph-commons 9.0.0
-    * Removed deprecated methods
-    * Updated to POI 3.17
-* v4.1.1 - 2017-04-19
-    * Updated to POI 3.16
-* v4.1.0 - 2016-09-22
-    * Updated to POI 3.15
-* v4.0.0 - 2016-06-10
-    * Requires at least JDK 8
-    * Updated to POI 3.14
-    * Binds to ph-commons 8.x
-* v3.0.1 - 2015-10-19
-* v3.0.0 - 2015-07-09
-    * Binds to ph-commons 6.x
-* v2.9.4 - 2015-03-31
-* v2.9.3 - 2015-03-11
-* v2.9.2 - 2015-01-13
-* v2.9.1 - 2014-10-30
-* v2.9.0 - 2014-08-25   
+
+v7.0.0 - work in progress
+* Requires Java 17 as the minimum version
+* Updated to ph-commons 12.0.0
+* Updated to POI 5.4.1
+
+v6.0.4 - 2025-01-25
+* Updated to POI 5.4.0
+* Updated to commons-compress 1.27.1
+
+v6.0.3 - 2024-07-17
+* Updated to POI 5.3.0
+* Updated to commons-compress 1.26.2
+
+v6.0.2 - 2024-03-27
+* Updated to POI 5.2.5
+* Updated to commons-compress 1.25
+
+v6.0.1 - 2023-07-31
+* Updated to POI 5.2.3
+* Updated to commons-compress 1.23
+* Updated to ph-commons 11.1.0
+
+v6.0.0 - 2022-09-14
+* Using Java 11 as the baseline
+* Updated to ph-commons 11
+* Updated to POI 5.2.2
+
+v5.3.2 - 2022-03-06
+* Updated to POI 5.2.1
+
+v5.3.1 - 2022-02-01
+* Updated to POI 5.2.0
+
+v5.3.0 - 2021-11-05
+* Updated to POI 5.1.0
+* Removed the class `POISLF4JLogger`
+
+v5.2.0 - 2021-03-21
+* Updated to ph-commons 10
+
+v5.1.0 - 2021-01-28
+* Updated to POI 5.0.0
+* Excluded support for SVG and PDF to lower dependency weight
+
+v5.0.7 - 2020-02-17
+* Updated to commons-compress 1.20
+* Updated to POI 4.1.2
+
+v5.0.6 - 2019-10-21
+* Updated to commons-compress 1.19
+* Updated to POI 4.1.1
+
+v5.0.5 - 2019-06-04
+* Updated to XMLBeans 3.1.0
+* Updated to POI 4.1.0
+
+v5.0.4 - 2019-02-09
+* Updated to POI 4.0.1
+* `WorkbookCreationHelper` now implements `AutoClosable`
+
+v5.0.3 - 2018-11-22
+* Updated to ph-commons 9.2.0
+
+v5.0.2 - 2018-09-10
+* Updated to POI 4.0.0
+
+v5.0.1 - 2018-08-09
+* Fixed OSGI ServiceProvider configuration
+* Added new class `CExcel` with some constants.
+* Updated to XMLBeans 3.0.0
+
+v5.0.0 - 2017-11-06
+* Updated to ph-commons 9.0.0
+* Removed deprecated methods
+* Updated to POI 3.17
+
+v4.1.1 - 2017-04-19
+* Updated to POI 3.16
+
+v4.1.0 - 2016-09-22
+* Updated to POI 3.15
+
+v4.0.0 - 2016-06-10
+* Requires at least JDK 8
+* Updated to POI 3.14
+* Binds to ph-commons 8.x
+
+v3.0.1 - 2015-10-19
+
+v3.0.0 - 2015-07-09
+* Binds to ph-commons 6.x
+
+v2.9.4 - 2015-03-31
+
+v2.9.3 - 2015-03-11
+
+v2.9.2 - 2015-01-13
+
+v2.9.1 - 2014-10-30
+
+v2.9.0 - 2014-08-25   
 
 ---
 
