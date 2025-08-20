@@ -39,10 +39,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.datetime.PDTFactory;
-import com.helger.commons.io.IHasInputStream;
-import com.helger.commons.io.stream.StreamHelper;
-import com.helger.commons.string.StringHelper;
+import com.helger.base.io.iface.IHasInputStream;
+import com.helger.base.io.stream.StreamHelper;
+import com.helger.base.string.StringReplace;
+import com.helger.datetime.helper.PDTFactory;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
@@ -60,14 +60,13 @@ public final class ExcelReadHelper
   {}
 
   /**
-   * Try to read an Excel {@link Workbook} from the passed
-   * {@link IHasInputStream}. First XLS is tried, than XLSX, as XLS files can be
-   * identified more easily.
+   * Try to read an Excel {@link Workbook} from the passed {@link IHasInputStream}. First XLS is
+   * tried, than XLSX, as XLS files can be identified more easily.
    *
    * @param aIIS
    *        The input stream provider to read from.
-   * @return <code>null</code> if the content of the InputStream could not be
-   *         interpreted as Excel file
+   * @return <code>null</code> if the content of the InputStream could not be interpreted as Excel
+   *         file
    */
   @Nullable
   public static Workbook readWorkbookFromInputStream (@Nonnull final IHasInputStream aIIS)
@@ -138,8 +137,7 @@ public final class ExcelReadHelper
    *
    * @param aCell
    *        The cell to be queried. May be <code>null</code>.
-   * @return <code>null</code> if the cell is <code>null</code> or if it is of
-   *         type blank.
+   * @return <code>null</code> if the cell is <code>null</code> or if it is of type blank.
    */
   @Nullable
   public static Object getCellValueObject (@Nullable final Cell aCell)
@@ -198,7 +196,7 @@ public final class ExcelReadHelper
         aSB.append (c);
 
     // And trim away all unnecessary spaces
-    return StringHelper.replaceAllRepeatedly (aSB.toString ().trim (), "  ", " ");
+    return StringReplace.replaceAllRepeatedly (aSB.toString ().trim (), "  ", " ");
   }
 
   @Nullable

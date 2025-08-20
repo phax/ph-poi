@@ -19,7 +19,7 @@ package com.helger.poi;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 
-import com.helger.commons.system.SystemProperties;
+import com.helger.base.system.SystemProperties;
 
 /**
  * This class can be used to initialize POI to work best with the "ph" stack.

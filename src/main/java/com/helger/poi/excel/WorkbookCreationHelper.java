@@ -47,14 +47,14 @@ import org.apache.poi.ss.util.WorkbookUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.datetime.PDTFactory;
-import com.helger.commons.io.EAppend;
-import com.helger.commons.io.file.FileHelper;
-import com.helger.commons.io.resource.IWritableResource;
-import com.helger.commons.io.stream.NonBlockingByteArrayOutputStream;
-import com.helger.commons.io.stream.StreamHelper;
-import com.helger.commons.state.ESuccess;
+import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.io.EAppend;
+import com.helger.base.io.nonblocking.NonBlockingByteArrayOutputStream;
+import com.helger.base.io.stream.StreamHelper;
+import com.helger.base.state.ESuccess;
+import com.helger.datetime.helper.PDTFactory;
+import com.helger.io.file.FileHelper;
+import com.helger.io.resource.IWritableResource;
 import com.helger.poi.excel.style.ExcelStyle;
 import com.helger.poi.excel.style.ExcelStyleCache;
 
@@ -208,8 +208,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param bValue
    *        The value to be set.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (final boolean bValue)
@@ -222,17 +221,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * Added a new cell as date/time.
    * <p>
-   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
-   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
-   * after a date/time cell!
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with something like
+   * <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code> after a date/time cell!
    * <p>
-   * Important: Excel cannot correctly handle dates/times before
-   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   * Important: Excel cannot correctly handle dates/times before {@link CExcel#EXCEL_MINIMUM_DATE
+   * 1900-01-01}
    *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final Calendar aValue)
@@ -246,17 +243,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * Added a new cell as date/time.
    * <p>
-   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
-   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
-   * after a date/time cell!
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with something like
+   * <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code> after a date/time cell!
    * <p>
-   * Important: Excel cannot correctly handle dates/times before
-   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   * Important: Excel cannot correctly handle dates/times before {@link CExcel#EXCEL_MINIMUM_DATE
+   * 1900-01-01}
    *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final Date aValue)
@@ -270,17 +265,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * Added a new cell as date/time.
    * <p>
-   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
-   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
-   * after a date/time cell!
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with something like
+   * <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code> after a date/time cell!
    * <p>
-   * Important: Excel cannot correctly handle dates/times before
-   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   * Important: Excel cannot correctly handle dates/times before {@link CExcel#EXCEL_MINIMUM_DATE
+   * 1900-01-01}
    *
    * @param aValue
    *        The value to be set.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final LocalDate aValue)
@@ -293,17 +286,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * Added a new cell as date/time.
    * <p>
-   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
-   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
-   * after a date/time cell!
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with something like
+   * <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code> after a date/time cell!
    * <p>
-   * Important: Excel cannot correctly handle dates/times before
-   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   * Important: Excel cannot correctly handle dates/times before {@link CExcel#EXCEL_MINIMUM_DATE
+   * 1900-01-01}
    *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final LocalDateTime aValue)
@@ -316,17 +307,15 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * Added a new cell as date/time.
    * <p>
-   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with
-   * something like <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code>
-   * after a date/time cell!
+   * Important: don't forget to call {@link #addCellStyle(ExcelStyle)} with something like
+   * <code>new ExcelStyle ().setDataFormat ("dd.mm.yyyy");</code> after a date/time cell!
    * <p>
-   * Important: Excel cannot correctly handle dates/times before
-   * {@link CExcel#EXCEL_MINIMUM_DATE 1900-01-01}
+   * Important: Excel cannot correctly handle dates/times before {@link CExcel#EXCEL_MINIMUM_DATE
+   * 1900-01-01}
    *
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final ZonedDateTime aValue)
@@ -339,8 +328,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final BigInteger aValue)
@@ -358,8 +346,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param dValue
    *        The value to be set.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (final double dValue)
@@ -372,8 +359,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final BigDecimal aValue)
@@ -395,8 +381,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param aValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final RichTextString aValue)
@@ -410,8 +395,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param sValue
    *        The value to be set. May be <code>null</code>.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         value
+   * @return A new cell in the current row of the current sheet with the passed value
    */
   @Nonnull
   public Cell addCell (@Nullable final String sValue)
@@ -425,8 +409,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @param sFormula
    *        The formula to be set. May be <code>null</code> to set no formula.
-   * @return A new cell in the current row of the current sheet with the passed
-   *         formula
+   * @return A new cell in the current row of the current sheet with the passed formula
    */
   @Nonnull
   public Cell addCellFormula (@Nullable final String sFormula)
@@ -437,14 +420,13 @@ public final class WorkbookCreationHelper implements AutoCloseable
   }
 
   /**
-   * Add a merge region in the current row. Note: only the content of the first
-   * cell is used as the content of the merged cell!
+   * Add a merge region in the current row. Note: only the content of the first cell is used as the
+   * content of the merged cell!
    *
    * @param nFirstCol
    *        First column to be merged (inclusive). 0-based
    * @param nLastCol
-   *        Last column to be merged (inclusive). 0-based, must be larger than
-   *        {@code nFirstCol}
+   *        Last column to be merged (inclusive). 0-based, must be larger than {@code nFirstCol}
    * @return index of this region
    */
   public int addMergeRegionInCurrentRow (@Nonnegative final int nFirstCol, @Nonnegative final int nLastCol)
@@ -459,13 +441,11 @@ public final class WorkbookCreationHelper implements AutoCloseable
    * @param nFirstRow
    *        Index of first row
    * @param nLastRow
-   *        Index of last row (inclusive), must be equal to or larger than
-   *        {@code nFirstRow}
+   *        Index of last row (inclusive), must be equal to or larger than {@code nFirstRow}
    * @param nFirstCol
    *        Index of first column
    * @param nLastCol
-   *        Index of last column (inclusive), must be equal to or larger than
-   *        {@code nFirstCol}
+   *        Index of last column (inclusive), must be equal to or larger than {@code nFirstCol}
    * @return index of this region
    */
   public int addMergeRegion (@Nonnegative final int nFirstRow,
@@ -516,8 +496,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   }
 
   /**
-   * @return The number of cells in the current row in the current sheet,
-   *         0-based
+   * @return The number of cells in the current row in the current sheet, 0-based
    */
   @Nonnegative
   public int getCellCountInRow ()
@@ -526,8 +505,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   }
 
   /**
-   * @return The maximum number of cells in a single row in the current sheet,
-   *         0-based.
+   * @return The maximum number of cells in a single row in the current sheet, 0-based.
    */
   @Nonnegative
   public int getMaximumCellCountInRowInSheet ()
@@ -609,8 +587,8 @@ public final class WorkbookCreationHelper implements AutoCloseable
    * Write the current workbook to an output stream.
    *
    * @param aOS
-   *        The output stream to write to. May not be <code>null</code>. Is
-   *        automatically closed independent of the success state.
+   *        The output stream to write to. May not be <code>null</code>. Is automatically closed
+   *        independent of the success state.
    * @return {@link ESuccess}
    */
   @Nonnull

@@ -21,11 +21,11 @@ import javax.annotation.Nullable;
 
 import org.apache.poi.ss.usermodel.CellStyle;
 
-import com.helger.commons.ValueEnforcer;
-import com.helger.commons.annotation.ReturnsMutableObject;
-import com.helger.commons.collection.impl.CommonsHashMap;
-import com.helger.commons.collection.impl.ICommonsMap;
-import com.helger.commons.string.ToStringGenerator;
+import com.helger.annotation.style.ReturnsMutableObject;
+import com.helger.base.enforce.ValueEnforcer;
+import com.helger.base.tostring.ToStringGenerator;
+import com.helger.collection.commons.CommonsHashMap;
+import com.helger.collection.commons.ICommonsMap;
 
 /**
  * A caching class that maps {@link ExcelStyle} objects to {@link CellStyle}.
