@@ -21,8 +21,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import javax.annotation.Nonnull;
-
 import org.apache.poi.ss.formula.IStabilityClassifier;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -35,6 +33,8 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.junit.Test;
 
 import com.helger.io.resource.ClassPathResource;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Test class for class {@link ExcelReadHelper}.

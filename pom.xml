@@ -80,7 +80,6 @@
 
   <properties>
     <poi.version>5.4.1</poi.version>
-    <spotbugs-annotations.version>4.9.3</spotbugs-annotations.version>
   </properties>
 
   <dependencyManagement>
@@ -105,7 +104,7 @@
       <dependency>
         <groupId>commons-codec</groupId>
         <artifactId>commons-codec</artifactId>
-        <version>1.18.0</version>
+        <version>1.19.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.commons</groupId>
@@ -166,14 +165,6 @@
           <artifactId>graphics2d</artifactId>
         </exclusion>
       </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>com.github.spotbugs</groupId>
-      <artifactId>spotbugs-annotations</artifactId>
-      <version>${spotbugs-annotations.version}</version>
-      <scope>compile</scope>
-      <optional>true</optional>
     </dependency>
 
     <dependency>

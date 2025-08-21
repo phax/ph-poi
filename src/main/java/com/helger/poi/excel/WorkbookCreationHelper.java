@@ -29,11 +29,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.annotation.Nonnegative;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.WillClose;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -47,6 +42,8 @@ import org.apache.poi.ss.util.WorkbookUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.annotation.Nonnegative;
+import com.helger.annotation.WillClose;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.io.EAppend;
 import com.helger.base.io.nonblocking.NonBlockingByteArrayOutputStream;
@@ -57,6 +54,9 @@ import com.helger.io.file.FileHelper;
 import com.helger.io.resource.IWritableResource;
 import com.helger.poi.excel.style.ExcelStyle;
 import com.helger.poi.excel.style.ExcelStyleCache;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * A utility class for creating very simple Excel workbooks.

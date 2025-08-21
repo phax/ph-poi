@@ -19,11 +19,6 @@ package com.helger.poi.excel;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.annotation.CheckForSigned;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.WillClose;
-
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.NotOfficeXmlFileException;
@@ -33,13 +28,18 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.helger.annotation.CheckForSigned;
 import com.helger.annotation.Nonempty;
+import com.helger.annotation.WillClose;
 import com.helger.base.CGlobal;
 import com.helger.base.id.IHasID;
 import com.helger.base.lang.EnumHelper;
 import com.helger.mime.CMimeType;
 import com.helger.mime.IMimeType;
 import com.helger.poi.POISetup;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Encapsulates the main differences between the different excel versions.

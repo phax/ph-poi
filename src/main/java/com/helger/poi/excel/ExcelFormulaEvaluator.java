@@ -16,9 +16,6 @@
  */
 package com.helger.poi.excel;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.formula.IStabilityClassifier;
@@ -31,6 +28,9 @@ import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.helger.base.tostring.ToStringGenerator;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 public class ExcelFormulaEvaluator
 {

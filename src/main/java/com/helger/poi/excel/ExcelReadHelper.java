@@ -23,10 +23,6 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import javax.annotation.concurrent.Immutable;
-
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.NotOLE2FileException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
@@ -39,12 +35,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.helger.annotation.concurrent.Immutable;
 import com.helger.base.io.iface.IHasInputStream;
 import com.helger.base.io.stream.StreamHelper;
 import com.helger.base.string.StringReplace;
 import com.helger.datetime.helper.PDTFactory;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * Misc Excel read helper methods.
@@ -200,7 +198,6 @@ public final class ExcelReadHelper
   }
 
   @Nullable
-  @SuppressFBWarnings ("NP_BOOLEAN_RETURN_NULL")
   public static Boolean getCellValueBoolean (@Nullable final Cell aCell)
   {
     final Object aValue = getCellValueObject (aCell);

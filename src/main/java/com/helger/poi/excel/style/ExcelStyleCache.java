@@ -16,9 +16,6 @@
  */
 package com.helger.poi.excel.style;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import org.apache.poi.ss.usermodel.CellStyle;
 
 import com.helger.annotation.style.ReturnsMutableObject;
@@ -26,6 +23,9 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.tostring.ToStringGenerator;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsMap;
+
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 /**
  * A caching class that maps {@link ExcelStyle} objects to {@link CellStyle}.

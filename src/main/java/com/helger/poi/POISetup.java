@@ -16,10 +16,10 @@
  */
 package com.helger.poi;
 
-import javax.annotation.Nonnull;
-import javax.annotation.concurrent.ThreadSafe;
-
+import com.helger.annotation.concurrent.ThreadSafe;
 import com.helger.base.system.SystemProperties;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * This class can be used to initialize POI to work best with the "ph" stack.

@@ -21,10 +21,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
-import javax.annotation.Nonnull;
-
 import com.helger.base.CGlobal;
 import com.helger.datetime.helper.PDTFactory;
+
+import jakarta.annotation.Nonnull;
 
 /**
  * Excel constants.
