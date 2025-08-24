@@ -20,7 +20,7 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 # News and noteworthy
 
 
-v7.0.0 - work in progress
+v7.0.0 - 2025-08-24
 * Requires Java 17 as the minimum version
 * Updated to ph-commons 12.0.0
 * Updated to POI 5.4.1

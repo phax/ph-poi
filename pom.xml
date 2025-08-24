@@ -79,7 +79,7 @@
       <dependency>
         <groupId>com.helger.commons</groupId>
         <artifactId>ph-commons-parent-pom</artifactId>
-        <version>12.0.0-rc1</version>
+        <version>12.0.0</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -145,22 +145,26 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <exclusions>
-        <!-- required for SVG support -->        <exclusion>
+        <!-- required for SVG support -->
+        <exclusion>
           <groupId>org.apache.xmlgraphics</groupId>
           <artifactId>batik-all</artifactId>
         </exclusion>
-        <!-- required for PDF support -->        <exclusion>
+        <!-- required for PDF support -->
+        <exclusion>
           <groupId>de.rototor.pdfbox</groupId>
           <artifactId>graphics2d</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
+    
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <scope>test</scope>
     </dependency>
-    <!-- Forward Log4J to SLF4J -->    <dependency>
+    <!-- Forward Log4J to SLF4J -->
+    <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-to-slf4j</artifactId>
       <scope>test</scope>
@@ -176,6 +180,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
   <build>
     <plugins>
       <plugin>
