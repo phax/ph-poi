@@ -30,11 +30,10 @@ import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.jspecify.annotations.NonNull;
 import org.junit.Test;
 
 import com.helger.io.resource.ClassPathResource;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Test class for class {@link ExcelReadHelper}.
@@ -52,7 +51,7 @@ public final class ExcelReadHelperTest
    * @param aWB
    *        Workbook to use
    */
-  private void _validateWorkbook (@Nonnull final Workbook aWB)
+  private void _validateWorkbook (@NonNull final Workbook aWB)
   {
     final Sheet aSheet1 = aWB.getSheet ("Sheet1");
     assertNotNull (aSheet1);

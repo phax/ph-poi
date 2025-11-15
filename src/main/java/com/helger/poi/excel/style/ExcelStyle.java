@@ -27,6 +27,8 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.concurrent.NotThreadSafe;
 import com.helger.base.clone.ICloneable;
@@ -34,9 +36,6 @@ import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.equals.EqualsHelper;
 import com.helger.base.hashcode.HashCodeGenerator;
 import com.helger.base.tostring.ToStringGenerator;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * Represents a single excel style.
@@ -65,7 +64,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
   public ExcelStyle ()
   {}
 
-  public ExcelStyle (@Nonnull final ExcelStyle aOther)
+  public ExcelStyle (@NonNull final ExcelStyle aOther)
   {
     ValueEnforcer.notNull (aOther, "Other");
     m_eAlign = aOther.m_eAlign;
@@ -88,7 +87,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eAlign;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setAlign (@Nullable final HorizontalAlignment eAlign)
   {
     m_eAlign = eAlign;
@@ -101,7 +100,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eVAlign;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setVerticalAlign (@Nullable final VerticalAlignment eVAlign)
   {
     m_eVAlign = eVAlign;
@@ -113,7 +112,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_bWrapText;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setWrapText (final boolean bWrapText)
   {
     m_bWrapText = bWrapText;
@@ -126,7 +125,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_sDataFormat;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setDataFormat (@Nullable final String sDataFormat)
   {
     m_sDataFormat = sDataFormat;
@@ -139,7 +138,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eFillBackgroundColor;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setFillBackgroundColor (@Nullable final IndexedColors eColor)
   {
     m_eFillBackgroundColor = eColor;
@@ -152,7 +151,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eFillForegroundColor;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setFillForegroundColor (@Nullable final IndexedColors eColor)
   {
     m_eFillForegroundColor = eColor;
@@ -165,7 +164,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eFillPattern;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setFillPattern (@Nullable final FillPatternType ePattern)
   {
     m_eFillPattern = ePattern;
@@ -178,7 +177,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eBorderTop;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setBorderTop (@Nullable final BorderStyle eBorder)
   {
     m_eBorderTop = eBorder;
@@ -191,7 +190,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eBorderRight;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setBorderRight (@Nullable final BorderStyle eBorder)
   {
     m_eBorderRight = eBorder;
@@ -204,7 +203,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eBorderBottom;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setBorderBottom (@Nullable final BorderStyle eBorder)
   {
     m_eBorderBottom = eBorder;
@@ -217,14 +216,14 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return m_eBorderLeft;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setBorderLeft (@Nullable final BorderStyle eBorder)
   {
     m_eBorderLeft = eBorder;
     return this;
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle setBorder (@Nullable final BorderStyle eBorder)
   {
     return setBorderTop (eBorder).setBorderRight (eBorder).setBorderBottom (eBorder).setBorderLeft (eBorder);
@@ -243,7 +242,7 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
    *        The font index to use. Values &lt; 0 indicate no font to use
    * @return this
    */
-  @Nonnull
+  @NonNull
   public ExcelStyle setFontIndex (final int nFontIndex)
   {
     m_nFontIndex = nFontIndex;
@@ -258,20 +257,20 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
    *        The font to use. May not be <code>null</code>.
    * @return this
    */
-  @Nonnull
-  public ExcelStyle setFont (@Nonnull final Font aFont)
+  @NonNull
+  public ExcelStyle setFont (@NonNull final Font aFont)
   {
     ValueEnforcer.notNull (aFont, "Font");
     return setFontIndex (aFont.getIndex ());
   }
 
-  @Nonnull
+  @NonNull
   public ExcelStyle getClone ()
   {
     return new ExcelStyle (this);
   }
 
-  public void fillCellStyle (@Nonnull final Workbook aWB, @Nonnull final CellStyle aCS, @Nonnull final CreationHelper aCreationHelper)
+  public void fillCellStyle (@NonNull final Workbook aWB, @NonNull final CellStyle aCS, @NonNull final CreationHelper aCreationHelper)
   {
     if (m_eAlign != null)
       aCS.setAlignment (m_eAlign);

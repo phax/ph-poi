@@ -19,6 +19,10 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 
 # News and noteworthy
 
+v7.1.0 - 2025-11-16
+* Updated to POI 5.5.0
+* Updated to ph-commons 12.1.0
+* Using JSpecify annotations
 
 v7.0.0 - 2025-08-24
 * Requires Java 17 as the minimum version

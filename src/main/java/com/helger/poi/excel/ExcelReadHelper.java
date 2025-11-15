@@ -32,6 +32,8 @@ import org.apache.poi.ss.usermodel.Hyperlink;
 import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -40,9 +42,6 @@ import com.helger.base.io.iface.IHasInputStream;
 import com.helger.base.io.stream.StreamHelper;
 import com.helger.base.string.StringReplace;
 import com.helger.datetime.helper.PDTFactory;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * Misc Excel read helper methods.
@@ -67,7 +66,7 @@ public final class ExcelReadHelper
    *         file
    */
   @Nullable
-  public static Workbook readWorkbookFromInputStream (@Nonnull final IHasInputStream aIIS)
+  public static Workbook readWorkbookFromInputStream (@NonNull final IHasInputStream aIIS)
   {
     InputStream aIS = null;
     try
@@ -112,7 +111,7 @@ public final class ExcelReadHelper
     return null;
   }
 
-  @Nonnull
+  @NonNull
   private static Number _getAsNumberObject (final double dValue)
   {
     if (dValue == (int) dValue)

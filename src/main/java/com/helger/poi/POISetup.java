@@ -16,10 +16,10 @@
  */
 package com.helger.poi;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.annotation.concurrent.ThreadSafe;
 import com.helger.base.system.SystemProperties;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * This class can be used to initialize POI to work best with the "ph" stack.
@@ -29,7 +29,7 @@ import jakarta.annotation.Nonnull;
 @ThreadSafe
 public final class POISetup
 {
-  private static void _setValue (@Nonnull final String sKey, final int nValue)
+  private static void _setValue (@NonNull final String sKey, final int nValue)
   {
     if (!SystemProperties.containsPropertyName (sKey))
       SystemProperties.setPropertyValue (sKey, nValue);

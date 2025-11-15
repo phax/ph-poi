@@ -17,15 +17,14 @@
 package com.helger.poi.excel.style;
 
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.style.ReturnsMutableObject;
 import com.helger.base.enforce.ValueEnforcer;
 import com.helger.base.tostring.ToStringGenerator;
 import com.helger.collection.commons.CommonsHashMap;
 import com.helger.collection.commons.ICommonsMap;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * A caching class that maps {@link ExcelStyle} objects to {@link CellStyle}.
@@ -39,7 +38,7 @@ public class ExcelStyleCache
   public ExcelStyleCache ()
   {}
 
-  @Nonnull
+  @NonNull
   @ReturnsMutableObject
   public ICommonsMap <ExcelStyle, CellStyle> map ()
   {
@@ -52,7 +51,7 @@ public class ExcelStyleCache
     return m_aMap.get (aExcelStyle);
   }
 
-  public void addCellStyle (@Nonnull final ExcelStyle aExcelStyle, @Nonnull final CellStyle aCellStyle)
+  public void addCellStyle (@NonNull final ExcelStyle aExcelStyle, @NonNull final CellStyle aCellStyle)
   {
     ValueEnforcer.notNull (aExcelStyle, "ExcelStyle");
     ValueEnforcer.notNull (aCellStyle, "CellStyle");

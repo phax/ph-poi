@@ -39,6 +39,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.WorkbookUtil;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,9 +56,6 @@ import com.helger.io.file.FileHelper;
 import com.helger.io.resource.IWritableResource;
 import com.helger.poi.excel.style.ExcelStyle;
 import com.helger.poi.excel.style.ExcelStyleCache;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 /**
  * A utility class for creating very simple Excel workbooks.
@@ -78,12 +77,12 @@ public final class WorkbookCreationHelper implements AutoCloseable
   private int m_nMaxCellIndex = 0;
   private int m_nCreatedCellStyles = 0;
 
-  public WorkbookCreationHelper (@Nonnull final EExcelVersion eVersion)
+  public WorkbookCreationHelper (@NonNull final EExcelVersion eVersion)
   {
     this (eVersion.createWorkbook ());
   }
 
-  public WorkbookCreationHelper (@Nonnull final Workbook aWB)
+  public WorkbookCreationHelper (@NonNull final Workbook aWB)
   {
     m_aWB = ValueEnforcer.notNull (aWB, "Workbook");
     m_aCreationHelper = aWB.getCreationHelper ();
@@ -101,7 +100,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
     }
   }
 
-  @Nonnull
+  @NonNull
   public Workbook getWorkbook ()
   {
     return m_aWB;
@@ -112,7 +111,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *
    * @return The created font.
    */
-  @Nonnull
+  @NonNull
   public Font createFont ()
   {
     return m_aWB.createFont ();
@@ -121,7 +120,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @return A new sheet with a default name
    */
-  @Nonnull
+  @NonNull
   public Sheet createNewSheet ()
   {
     return createNewSheet (null);
@@ -134,7 +133,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The name to be used. May be <code>null</code>.
    * @return The created workbook sheet
    */
-  @Nonnull
+  @NonNull
   public Sheet createNewSheet (@Nullable final String sName)
   {
     m_aLastSheet = sName == null ? m_aWB.createSheet () : m_aWB.createSheet (WorkbookUtil.createSafeSheetName (sName));
@@ -155,7 +154,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @return A new row in the current sheet.
    */
-  @Nonnull
+  @NonNull
   public Row addRow ()
   {
     _ensureSheet ();
@@ -192,7 +191,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
   /**
    * @return A new cell in the current row of the current sheet
    */
-  @Nonnull
+  @NonNull
   public Cell addCell ()
   {
     _ensureRow ();
@@ -210,7 +209,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (final boolean bValue)
   {
     final Cell aCell = addCell ();
@@ -231,7 +230,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final Calendar aValue)
   {
     final Cell aCell = addCell ();
@@ -253,7 +252,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final Date aValue)
   {
     final Cell aCell = addCell ();
@@ -275,7 +274,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final LocalDate aValue)
   {
     if (aValue == null)
@@ -296,7 +295,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final LocalDateTime aValue)
   {
     if (aValue == null)
@@ -317,7 +316,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final ZonedDateTime aValue)
   {
     if (aValue == null)
@@ -330,7 +329,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final BigInteger aValue)
   {
     if (aValue == null)
@@ -348,7 +347,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (final double dValue)
   {
     final Cell aCell = addCell ();
@@ -361,7 +360,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final BigDecimal aValue)
   {
     if (aValue == null)
@@ -383,7 +382,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final RichTextString aValue)
   {
     final Cell aCell = addCell ();
@@ -397,7 +396,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The value to be set. May be <code>null</code>.
    * @return A new cell in the current row of the current sheet with the passed value
    */
-  @Nonnull
+  @NonNull
   public Cell addCell (@Nullable final String sValue)
   {
     final Cell aCell = addCell ();
@@ -411,7 +410,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The formula to be set. May be <code>null</code> to set no formula.
    * @return A new cell in the current row of the current sheet with the passed formula
    */
-  @Nonnull
+  @NonNull
   public Cell addCellFormula (@Nullable final String sFormula)
   {
     final Cell aCell = addCell ();
@@ -469,7 +468,7 @@ public final class WorkbookCreationHelper implements AutoCloseable
    * @param aExcelStyle
    *        The style to be set.
    */
-  public void addCellStyle (@Nonnull final ExcelStyle aExcelStyle)
+  public void addCellStyle (@NonNull final ExcelStyle aExcelStyle)
   {
     ValueEnforcer.notNull (aExcelStyle, "ExcelStyle");
     _ensureCell ();
@@ -564,8 +563,8 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The file to write to. May not be <code>null</code>.
    * @return {@link ESuccess}
    */
-  @Nonnull
-  public ESuccess writeTo (@Nonnull final File aFile)
+  @NonNull
+  public ESuccess writeTo (@NonNull final File aFile)
   {
     return writeTo (FileHelper.getOutputStream (aFile));
   }
@@ -577,8 +576,8 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        The resource to write to. May not be <code>null</code>.
    * @return {@link ESuccess}
    */
-  @Nonnull
-  public ESuccess writeTo (@Nonnull final IWritableResource aRes)
+  @NonNull
+  public ESuccess writeTo (@NonNull final IWritableResource aRes)
   {
     return writeTo (aRes.getOutputStream (EAppend.TRUNCATE));
   }
@@ -591,8 +590,8 @@ public final class WorkbookCreationHelper implements AutoCloseable
    *        independent of the success state.
    * @return {@link ESuccess}
    */
-  @Nonnull
-  public ESuccess writeTo (@Nonnull @WillClose final OutputStream aOS)
+  @NonNull
+  public ESuccess writeTo (@NonNull @WillClose final OutputStream aOS)
   {
     try
     {

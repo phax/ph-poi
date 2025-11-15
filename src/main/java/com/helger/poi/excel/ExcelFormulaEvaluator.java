@@ -26,22 +26,21 @@ import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import com.helger.base.tostring.ToStringGenerator;
-
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 public class ExcelFormulaEvaluator
 {
   private final FormulaEvaluator m_aEvaluator;
 
-  public ExcelFormulaEvaluator (@Nonnull final Workbook aWB)
+  public ExcelFormulaEvaluator (@NonNull final Workbook aWB)
   {
     m_aEvaluator = aWB.getCreationHelper ().createFormulaEvaluator ();
   }
 
-  public ExcelFormulaEvaluator (@Nonnull final Workbook aWB, @Nullable final IStabilityClassifier aStability)
+  public ExcelFormulaEvaluator (@NonNull final Workbook aWB, @Nullable final IStabilityClassifier aStability)
   {
     m_aEvaluator = aWB instanceof HSSFWorkbook ? new HSSFFormulaEvaluator ((HSSFWorkbook) aWB, aStability)
                                                : XSSFFormulaEvaluator.create ((XSSFWorkbook) aWB, aStability, null);
@@ -57,7 +56,7 @@ public class ExcelFormulaEvaluator
    *        The cell to evaluate
    * @return The evaluation result
    */
-  public CellValue evaluate (@Nonnull final Cell aCell)
+  public CellValue evaluate (@NonNull final Cell aCell)
   {
     return m_aEvaluator.evaluate (aCell);
   }
@@ -83,7 +82,7 @@ public class ExcelFormulaEvaluator
    *         Cell.CELL_TYPE_FORMULA however)
    */
   @Nullable
-  public CellType evaluateFormulaCell (@Nonnull final Cell aCell)
+  public CellType evaluateFormulaCell (@NonNull final Cell aCell)
   {
     return m_aEvaluator.evaluateFormulaCell (aCell);
   }
@@ -106,8 +105,8 @@ public class ExcelFormulaEvaluator
    *        Cell to evaluate
    * @return The cell in which it was evaluated
    */
-  @Nonnull
-  public Cell evaluateInCell (@Nonnull final Cell aCell)
+  @NonNull
+  public Cell evaluateInCell (@NonNull final Cell aCell)
   {
     return m_aEvaluator.evaluateInCell (aCell);
   }

@@ -27,6 +27,8 @@ import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jspecify.annotations.NonNull;
+import org.jspecify.annotations.Nullable;
 
 import com.helger.annotation.CheckForSigned;
 import com.helger.annotation.Nonempty;
@@ -38,9 +40,6 @@ import com.helger.mime.CMimeType;
 import com.helger.mime.IMimeType;
 import com.helger.poi.POISetup;
 
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
-
 /**
  * Encapsulates the main differences between the different excel versions.
  *
@@ -51,7 +50,7 @@ public enum EExcelVersion implements IHasID <String>
   XLS ("xls")
   {
     @Override
-    @Nonnull
+    @NonNull
     public HSSFWorkbook createWorkbook ()
     {
       return new HSSFWorkbook ();
@@ -59,7 +58,7 @@ public enum EExcelVersion implements IHasID <String>
 
     @Override
     @Nullable
-    public HSSFWorkbook readWorkbook (@Nonnull @WillClose final InputStream aIS)
+    public HSSFWorkbook readWorkbook (@NonNull @WillClose final InputStream aIS)
     {
       try
       {
@@ -74,21 +73,21 @@ public enum EExcelVersion implements IHasID <String>
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public HSSFRichTextString createRichText (final String sValue)
     {
       return new HSSFRichTextString (sValue);
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFileExtension ()
     {
       return ".xls";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public IMimeType getMimeType ()
     {
       return CMimeType.APPLICATION_MS_EXCEL;
@@ -104,7 +103,7 @@ public enum EExcelVersion implements IHasID <String>
   XLSX ("xlsx")
   {
     @Override
-    @Nonnull
+    @NonNull
     public XSSFWorkbook createWorkbook ()
     {
       return new XSSFWorkbook ();
@@ -112,7 +111,7 @@ public enum EExcelVersion implements IHasID <String>
 
     @Override
     @Nullable
-    public XSSFWorkbook readWorkbook (@Nonnull @WillClose final InputStream aIS)
+    public XSSFWorkbook readWorkbook (@NonNull @WillClose final InputStream aIS)
     {
       try
       {
@@ -127,21 +126,21 @@ public enum EExcelVersion implements IHasID <String>
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public XSSFRichTextString createRichText (final String sValue)
     {
       return new XSSFRichTextString (sValue);
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public String getFileExtension ()
     {
       return ".xlsx";
     }
 
     @Override
-    @Nonnull
+    @NonNull
     public IMimeType getMimeType ()
     {
       return CMimeType.APPLICATION_MS_EXCEL_2007;
@@ -162,12 +161,12 @@ public enum EExcelVersion implements IHasID <String>
 
   private final String m_sID;
 
-  private EExcelVersion (@Nonnull @Nonempty final String sID)
+  private EExcelVersion (@NonNull @Nonempty final String sID)
   {
     m_sID = sID;
   }
 
-  @Nonnull
+  @NonNull
   @Nonempty
   public String getID ()
   {
@@ -177,7 +176,7 @@ public enum EExcelVersion implements IHasID <String>
   /**
    * @return A newly created workbook of this version
    */
-  @Nonnull
+  @NonNull
   public abstract Workbook createWorkbook ();
 
   /**
@@ -188,21 +187,21 @@ public enum EExcelVersion implements IHasID <String>
    * @return <code>null</code> in case the workbook cannot be opened.
    */
   @Nullable
-  public abstract Workbook readWorkbook (@Nonnull InputStream aIS);
+  public abstract Workbook readWorkbook (@NonNull InputStream aIS);
 
-  @Nonnull
+  @NonNull
   public abstract RichTextString createRichText (String sValue);
 
   /**
    * @return The file extension incl. the leading dot.
    */
-  @Nonnull
+  @NonNull
   public abstract String getFileExtension ();
 
   /**
    * @return The MIME type for this excel version.
    */
-  @Nonnull
+  @NonNull
   public abstract IMimeType getMimeType ();
 
   /**

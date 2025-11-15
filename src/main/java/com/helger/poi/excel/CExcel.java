@@ -21,10 +21,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 
+import org.jspecify.annotations.NonNull;
+
 import com.helger.base.CGlobal;
 import com.helger.datetime.helper.PDTFactory;
-
-import jakarta.annotation.Nonnull;
 
 /**
  * Excel constants.
@@ -48,7 +48,7 @@ public final class CExcel
   private CExcel ()
   {}
 
-  public static boolean canBeNumericValue (@Nonnull final BigInteger aValue)
+  public static boolean canBeNumericValue (@NonNull final BigInteger aValue)
   {
     return aValue != null && aValue.compareTo (CExcel.EXCEL_MINIMUM_NUMBER) >= 0 && aValue.compareTo (CExcel.EXCEL_MAXIMUM_NUMBER) <= 0;
   }
