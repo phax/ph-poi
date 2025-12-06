@@ -78,7 +78,7 @@
   </repositories>
   
   <properties>
-    <poi.version>5.5.0</poi.version>
+    <poi.version>5.5.1</poi.version>
   </properties>
   
   <dependencyManagement>
