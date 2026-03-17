@@ -1,7 +1,9 @@
 # ph-poi
 
+<!-- ph-badge-start -->
+[![Sonatype Central](https://maven-badges.sml.io/sonatype-central/com.helger/ph-poi/badge.svg)](https://maven-badges.sml.io/sonatype-central/com.helger/ph-poi/)
 [![javadoc](https://javadoc.io/badge2/com.helger/ph-poi/javadoc.svg)](https://javadoc.io/doc/com.helger/ph-poi)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.helger/ph-poi/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.helger/ph-poi) 
+<!-- ph-badge-end -->
 
 Java library with some Apache POI improvements. Also adds some helper functions to more easily read and write type safe Excel files.
 
