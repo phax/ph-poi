@@ -22,6 +22,7 @@ Add the following to your pom.xml to use this artifact, replacing `x.y.z` with t
 # News and noteworthy
 
 v7.1.1 - work in progress
+* Removed OSGI bundling
 * Updated to POI 5.5.1
 
 v7.1.0 - 2025-11-16
