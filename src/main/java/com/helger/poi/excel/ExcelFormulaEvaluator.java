@@ -47,10 +47,10 @@ public class ExcelFormulaEvaluator
   }
 
   /**
-   * If cell contains a formula, the formula is evaluated and returned, else the
-   * CellValue simply copies the appropriate cell value from the cell and also
-   * its cell type. This method should be preferred over evaluateInCell() when
-   * the call should not modify the contents of the original cell.
+   * If cell contains a formula, the formula is evaluated and returned, else the CellValue simply
+   * copies the appropriate cell value from the cell and also its cell type. This method should be
+   * preferred over evaluateInCell() when the call should not modify the contents of the original
+   * cell.
    *
    * @param aCell
    *        The cell to evaluate
@@ -62,24 +62,22 @@ public class ExcelFormulaEvaluator
   }
 
   /**
-   * If cell contains formula, it evaluates the formula, and saves the result of
-   * the formula. The cell remains as a formula cell. Else if cell does not
-   * contain formula, this method leaves the cell unchanged. Note that the type
-   * of the formula result is returned, so you know what kind of value is also
-   * stored with the formula.
+   * If cell contains formula, it evaluates the formula, and saves the result of the formula. The
+   * cell remains as a formula cell. Else if cell does not contain formula, this method leaves the
+   * cell unchanged. Note that the type of the formula result is returned, so you know what kind of
+   * value is also stored with the formula.
    *
    * <pre>
    * int evaluatedCellType = evaluator.evaluateFormulaCell (cell);
    * </pre>
    *
-   * Be aware that your cell will hold both the formula, and the result. If you
-   * want the cell replaced with the result of the formula, use
-   * {@link #evaluateInCell(Cell)}
+   * Be aware that your cell will hold both the formula, and the result. If you want the cell
+   * replaced with the result of the formula, use {@link #evaluateInCell(Cell)}
    *
    * @param aCell
    *        The cell to evaluate
-   * @return The type of the formula result (the cell's type remains as
-   *         Cell.CELL_TYPE_FORMULA however)
+   * @return The type of the formula result (the cell's type remains as Cell.CELL_TYPE_FORMULA
+   *         however)
    */
   @Nullable
   public CellType evaluateFormulaCell (@NonNull final Cell aCell)
@@ -88,18 +86,17 @@ public class ExcelFormulaEvaluator
   }
 
   /**
-   * If cell contains formula, it evaluates the formula, and puts the formula
-   * result back into the cell, in place of the old formula. Else if cell does
-   * not contain formula, this method leaves the cell unchanged. Note that the
-   * same instance of Cell is returned to allow chained calls like:
+   * If cell contains formula, it evaluates the formula, and puts the formula result back into the
+   * cell, in place of the old formula. Else if cell does not contain formula, this method leaves
+   * the cell unchanged. Note that the same instance of Cell is returned to allow chained calls
+   * like:
    *
    * <pre>
    * int evaluatedCellType = evaluator.evaluateInCell (cell).getCellType ();
    * </pre>
    *
-   * Be aware that your cell value will be changed to hold the result of the
-   * formula. If you simply want the formula value computed for you, use
-   * {@link #evaluateFormulaCell(Cell)}
+   * Be aware that your cell value will be changed to hold the result of the formula. If you simply
+   * want the formula value computed for you, use {@link #evaluateFormulaCell(Cell)}
    *
    * @param aCell
    *        Cell to evaluate

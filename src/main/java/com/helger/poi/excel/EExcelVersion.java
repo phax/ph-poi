@@ -205,8 +205,7 @@ public enum EExcelVersion implements IHasID <String>
   public abstract IMimeType getMimeType ();
 
   /**
-   * @return <code>true</code> if this Excel version has a row limit inside a
-   *         sheet
+   * @return <code>true</code> if this Excel version has a row limit inside a sheet
    */
   public boolean hasRowLimitPerSheet ()
   {
@@ -214,8 +213,8 @@ public enum EExcelVersion implements IHasID <String>
   }
 
   /**
-   * @return the maximum number of rows per sheet (incl.) or
-   *         {@link CGlobal#ILLEGAL_UINT} if no limit exists
+   * @return the maximum number of rows per sheet (incl.) or {@link CGlobal#ILLEGAL_UINT} if no
+   *         limit exists
    */
   @CheckForSigned
   public abstract int getRowLimitPerSheet ();

@@ -235,8 +235,8 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
   }
 
   /**
-   * Set the index of the font to use. The font must have been previously
-   * created via Workbook.createFont()!
+   * Set the index of the font to use. The font must have been previously created via
+   * Workbook.createFont()!
    *
    * @param nFontIndex
    *        The font index to use. Values &lt; 0 indicate no font to use
@@ -250,8 +250,8 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
   }
 
   /**
-   * Set the index of the font to use. The font must have been previously
-   * created via Workbook.createFont()!
+   * Set the index of the font to use. The font must have been previously created via
+   * Workbook.createFont()!
    *
    * @param aFont
    *        The font to use. May not be <code>null</code>.
@@ -270,7 +270,9 @@ public class ExcelStyle implements ICloneable <ExcelStyle>, Serializable
     return new ExcelStyle (this);
   }
 
-  public void fillCellStyle (@NonNull final Workbook aWB, @NonNull final CellStyle aCS, @NonNull final CreationHelper aCreationHelper)
+  public void fillCellStyle (@NonNull final Workbook aWB,
+                             @NonNull final CellStyle aCS,
+                             @NonNull final CreationHelper aCreationHelper)
   {
     if (m_eAlign != null)
       aCS.setAlignment (m_eAlign);

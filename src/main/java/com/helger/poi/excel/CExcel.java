@@ -50,6 +50,8 @@ public final class CExcel
 
   public static boolean canBeNumericValue (@NonNull final BigInteger aValue)
   {
-    return aValue != null && aValue.compareTo (CExcel.EXCEL_MINIMUM_NUMBER) >= 0 && aValue.compareTo (CExcel.EXCEL_MAXIMUM_NUMBER) <= 0;
+    return aValue != null &&
+           aValue.compareTo (CExcel.EXCEL_MINIMUM_NUMBER) >= 0 &&
+           aValue.compareTo (CExcel.EXCEL_MAXIMUM_NUMBER) <= 0;
   }
 }
