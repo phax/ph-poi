@@ -33,11 +33,13 @@ import com.helger.base.version.Version;
 @IsSPIImplementation
 public final class ThirdPartyModuleProvider_ph_poi implements IThirdPartyModuleProviderSPI
 {
-  public static final IThirdPartyModule POI = new ThirdPartyModule ("Apache POI",
-                                                                    "Apache",
-                                                                    ELicense.APACHE2,
-                                                                    new Version (5, 5, 1),
-                                                                    "http://poi.apache.org/");
+  public static final IThirdPartyModule POI = ThirdPartyModule.builder ()
+                                                              .displayName ("Apache POI")
+                                                              .copyrightOwner ("Apache")
+                                                              .license (ELicense.APACHE2)
+                                                              .version (new Version (6, 0, 0))
+                                                              .webSiteUrl ("https://poi.apache.org/")
+                                                              .build ();
 
   @Nullable
   public IThirdPartyModule [] getAllThirdPartyModules ()
